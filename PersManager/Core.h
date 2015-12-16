@@ -47,5 +47,5 @@ public:
 
 	void OnResize(int width, int height);
 
-	static Screen* GetScreen() { return &_screen; }
+	static Screen* GetScreen();
 };

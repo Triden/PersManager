@@ -20,17 +20,15 @@ Widget::~Widget() {
 			break;
 		}
 	}
-	if (!have && _addToList) {
-		//Assert
-	}
+	assert(_addToList && have);
 }
 
 Core::Core(int fps, int screenWidth, int screenHeight, int glWidth, int glHeight):
 	Widget(false)
 {
-	_screen.SetFPS(fps);
-	_screen.SetSize(screenWidth, screenHeight);
-	_screen.SetGlSize(glWidth, glHeight);
+	GetScreen()->SetFPS(fps);
+	GetScreen()->SetSize(screenWidth, screenHeight);
+	GetScreen()->SetGlSize(glWidth, glHeight);
 	_widgets.clear();
 }
 
@@ -55,11 +53,11 @@ void Core::InitOpenGlContex() {
 		glutGet(GLUT_SCREEN_HEIGHT)
 		);
 
-	glutInitWindowPosition(screenSize.x / 2 - _screen.Width() / 2, screenSize.y / 2 - _screen.Height() / 2);
-	glutInitWindowSize(_screen.Width(), _screen.Height());
+	glutInitWindowPosition(screenSize.x / 2 - GetScreen()->Width() / 2, screenSize.y / 2 - GetScreen()->Height() / 2);
+	glutInitWindowSize(GetScreen()->Width(), GetScreen()->Height());
 	glutCreateWindow("Core");
 
-	InitGlView(_screen.Width(), _screen.Height(), _screen.GLWidth(), _screen.GLHeight());
+	InitGlView(GetScreen()->Width(), GetScreen()->Height(), GetScreen()->GLWidth(), GetScreen()->GLHeight());
 	glewInit();
 }
 
@@ -69,7 +67,7 @@ void Core::UpdateGL(int value) {
 	static int lastTime = 0;
 	int dt = cTime - lastTime;	//Реальное время, которой прошло с момента последнего апдейта
 	lastTime = cTime;
-	Update((dt * 1.f) / _screen.OneSecond());
+	Update((dt * 1.f) / GetScreen()->OneSecond());
 	Draw();
 }
 
@@ -78,7 +76,7 @@ void Core::OnStart() {
 }
 
 void Core::OnResize(int width, int height) {
-	_screen.OnResize(width, height);
+	GetScreen()->OnResize(width, height);
 }
 
 Core::~Core() {
@@ -104,8 +102,8 @@ void Core::Update(float dt) {
 
 void Core::MouseGL(int button, int state, int x, int y) {
 	IPoint mousePos(
-		(x * 1.f) / _screen.Width() * _screen.GLWidth(),
-		_screen.GLHeight() - (y * 1.f) / _screen.Height() * _screen.GLHeight()
+		(x * 1.f) / GetScreen()->Width() * GetScreen()->GLWidth(),
+		GetScreen()->GLHeight() - (y * 1.f) / GetScreen()->Height() * GetScreen()->GLHeight()
 		);
 
 	if (button == GLUT_LEFT_BUTTON) {
@@ -125,8 +123,8 @@ void Core::MouseDown(const IPoint& mousePos) {
 }
 
 void Core::MouseMoveGL(int x, int y) {
-	float xx = (x * 1.f) / _screen.Width() * _screen.GLWidth();
-	float yy = _screen.GLHeight() - (y * 1.f) / _screen.Height() * _screen.GLHeight();
+	float xx = (x * 1.f) / GetScreen()->Width() * GetScreen()->GLWidth();
+	float yy = GetScreen()->GLHeight() - (y * 1.f) / GetScreen()->Height() * GetScreen()->GLHeight();
 
 	MouseMove(IPoint(xx, yy));
 }
@@ -151,4 +149,8 @@ void Core::KeyPress(unsigned char key) {
 	for (int i = 0; i < int(_widgets.size()); ++i) {
 		_widgets[i]->KeyPress(key);
 	}
+}
+
+Screen* Core::GetScreen() {
+	return &_screen;
 }

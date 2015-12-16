@@ -10,6 +10,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
+#include <assert.h>
 
 //Open gl
 #include "..\Dependencies\glew\glew.h"
