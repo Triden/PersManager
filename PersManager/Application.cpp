@@ -1,7 +1,7 @@
 #include "Application.h"
 
 Application::Application() {
-
+	Core::GetScreen()->SetFixed(false);
 }
 
 Application::~Application() {

@@ -10,6 +10,7 @@ private:
 	bool _fixed;
 	float _ONE_SECOND;
 public:
+	Screen();
 	Screen(int fps, int screenWidth, int screenHeight, int glWidth, int glHeight);
 	void SetSize(int width, int height);
 	void SetGlSize(int glWidth, int glHeight);
@@ -24,4 +25,5 @@ public:
 	float OneSecond();
 	void SetOneSecond(float oneSecond);
 	int UpdateRate();
+	void OnResize(int width, int height);	//Изменение размера окна
 };

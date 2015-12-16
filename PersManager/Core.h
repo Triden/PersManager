@@ -20,12 +20,12 @@ public:
 
 class Core : public Widget {
 private:
-	Screen _screen;
+	static Screen _screen;
 public:
 	Core(int fps, int screenWidth, int screenHeight, int glWidth, int glHeight);
 	~Core();
 
-	void Start(int argc, char **argv);
+	void OnStart();
 	static void Empty();
 	void InitOpenGlContex();
 	void InitGlView(int width, int height, int glWidth, int glheight);
@@ -35,15 +35,17 @@ public:
 	void UpdateGL(int value);
 	void Update(float dt);
 
-	void MouseDownGL(int button, int state, int x, int y);
+	void MouseGL(int button, int state, int x, int y);
 	void MouseDown(const IPoint& mousePos);
+	void MouseUp(const IPoint& mousePos);
 
 	void MouseMoveGL(int x, int y);
 	void MouseMove(const IPoint& mousePos);
-	void MouseUp(const IPoint& mousePos);
 
 	void KeyPressGL(unsigned char key, int x, int y);
 	void KeyPress(unsigned char key);
 
-	Screen* GetScreen() { return &_screen; }
+	void OnResize(int width, int height);
+
+	static Screen* GetScreen() { return &_screen; }
 };

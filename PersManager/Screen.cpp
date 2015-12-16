@@ -1,5 +1,7 @@
 #include "Screen.h"
 
+#define DEFAULT_ONE_SECOND 1000.f
+
 Screen::Screen(int fps, int screenWidth, int screenHeight, int glWidth, int glHeight) :
 	_fps(fps),
 	_width(screenWidth),
@@ -7,7 +9,19 @@ Screen::Screen(int fps, int screenWidth, int screenHeight, int glWidth, int glHe
 	_glWidth(glWidth),
 	_glHeight(glHeight),
 	_fixed(true),
-	_ONE_SECOND(1000.f)
+	_ONE_SECOND(DEFAULT_ONE_SECOND)
+{
+
+}
+
+Screen::Screen() :
+	_fps(30),
+	_width(100),
+	_height(100),
+	_glWidth(200),
+	_glHeight(200),
+	_fixed(true),
+	_ONE_SECOND(DEFAULT_ONE_SECOND)
 {
 
 }
@@ -64,4 +78,23 @@ void Screen::SetOneSecond(float oneSecond) {
 
 int Screen::UpdateRate() {
 	return int((OneSecond() * 1.f) / FPS()); 
+}
+
+void Screen::OnResize(int width, int height) {
+	if (_fixed) {
+		//do nothing
+	} else {
+		int oldW = _width;
+		int oldH = _height;
+
+		int oldGW = _glWidth;
+		int oldGH = _glHeight;
+
+		SetSize(width, height);
+
+		float coefW = oldGW / oldW;
+		float coefH = oldGH / oldH;
+
+		SetGlSize(width * coefW, height * coefH);
+	}
 }

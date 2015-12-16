@@ -1,6 +1,7 @@
 #include "Core.h"
 
 Widget::Widgets Widget::_widgets;
+Screen Core::_screen;
 
 Widget::Widget(bool addToList) :
 	_addToList(addToList)
@@ -25,9 +26,11 @@ Widget::~Widget() {
 }
 
 Core::Core(int fps, int screenWidth, int screenHeight, int glWidth, int glHeight):
-	Widget(false),
-	_screen(fps, screenWidth, screenHeight, glWidth, glHeight)
+	Widget(false)
 {
+	_screen.SetFPS(fps);
+	_screen.SetSize(screenWidth, screenHeight);
+	_screen.SetGlSize(glWidth, glHeight);
 	_widgets.clear();
 }
 
@@ -70,8 +73,12 @@ void Core::UpdateGL(int value) {
 	Draw();
 }
 
-void Core::Start(int argc, char **argv) {
+void Core::OnStart() {
 
+}
+
+void Core::OnResize(int width, int height) {
+	_screen.OnResize(width, height);
 }
 
 Core::~Core() {
@@ -95,14 +102,18 @@ void Core::Update(float dt) {
 	}
 }
 
-void Core::MouseDownGL(int button, int state, int x, int y) {
-	IPoint mousePos;
-	
+void Core::MouseGL(int button, int state, int x, int y) {
+	IPoint mousePos(
+		(x * 1.f) / _screen.Width() * _screen.GLWidth(),
+		_screen.GLHeight() - (y * 1.f) / _screen.Height() * _screen.GLHeight()
+		);
+
 	if (button == GLUT_LEFT_BUTTON) {
 		if (state == GLUT_DOWN) {
-			float xx = (x * 1.f) / _screen.Width() * _screen.GLWidth();
-			float yy = _screen.GLHeight() - (y * 1.f) / _screen.Height() * _screen.GLHeight();
-			MouseDown(IPoint(xx, yy));
+			MouseDown(mousePos);
+		}
+		else if (state == GLUT_UP) {
+			MouseUp(mousePos);
 		}
 	}
 }
