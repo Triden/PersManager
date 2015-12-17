@@ -82,7 +82,8 @@ int Screen::UpdateRate() {
 
 void Screen::OnResize(int width, int height) {
 	if (_fixed) {
-		//do nothing
+		SetSize(width, height);
+		SetGlSize(_glWidth, _glHeight);
 	} else {
 		int oldW = _width;
 		int oldH = _height;

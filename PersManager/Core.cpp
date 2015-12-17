@@ -77,6 +77,7 @@ void Core::OnStart() {
 
 void Core::OnResize(int width, int height) {
 	GetScreen()->OnResize(width, height);
+	InitGlView(GetScreen()->Width(), GetScreen()->Height(), GetScreen()->GLWidth(), GetScreen()->GLHeight());
 }
 
 Core::~Core() {
