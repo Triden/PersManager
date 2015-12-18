@@ -16,10 +16,13 @@ namespace Core {
 		Application();
 		void UpdateGL(int value);
 		void OnStart();
-		void InitOpenGlContex();
+		void InitOpenGlContex(int argc, char **argv);
+		void InitWindow();
 		void Draw();
 		void Update(float dt);
+		void InitWindowSize(int width, int height);
 		void InitGlView(int width, int height, int glWidth, int glHeight);
+		void OnResize();
 		void OnResize(int width, int height);
 		void KeyPress(unsigned char key);
 		void KeyPressGL(unsigned char key, int x, int y);
@@ -29,6 +32,9 @@ namespace Core {
 		void MouseDown(const IPoint& mousePos);
 		void MouseUp(const IPoint& mousePos);
 		void AddWidget(Widget *widget);
+		IPoint ScreenSize();	//Реальный размер экрана
+		void SetWindowPos(IPoint pos);
+		void SwitchFullScreen();
 	};
 	extern Application application;
 };

@@ -27,15 +27,21 @@
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="Widget.cpp" />
+    <ClCompile Include="Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="GameField.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="rapidxml\rapidxml.hpp" />
+    <ClInclude Include="rapidxml\rapidxml_iterators.hpp" />
+    <ClInclude Include="rapidxml\rapidxml_print.hpp" />
+    <ClInclude Include="rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="Widget.h" />
+    <ClInclude Include="Writer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{352A9422-8AB4-4401-9A40-C86928E1C9CF}</ProjectGuid>

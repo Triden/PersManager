@@ -3,3 +3,4 @@
 #include "Application.h"
 #include "Widget.h"
 #include "Render.h"
+#include "Writer.h"

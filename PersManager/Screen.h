@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Math.h"
+
 namespace Core {
 	class Screen {
 	private:

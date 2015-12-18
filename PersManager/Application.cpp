@@ -20,21 +20,24 @@ namespace Core {
 		Draw();
 	};
 
-	void Application::InitOpenGlContex() {
-		glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-		
-		const IPoint screenSize(
-			glutGet(GLUT_SCREEN_WIDTH),
-			glutGet(GLUT_SCREEN_HEIGHT)
-			);
+	void Application::InitOpenGlContex(int argc, char **argv) {
+		glutInit(&argc, argv);
 
-		glutInitWindowPosition(screenSize.x / 2 - screen.Width() / 2, screenSize.y / 2 - screen.Height() / 2);
-		glutInitWindowSize(screen.Width(), screen.Height());
-		glutCreateWindow("Core");
+		glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 		
 		InitGlView(screen.Width(), screen.Height(), screen.GLWidth(), screen.GLHeight());
 		glewInit();	
 	};
+
+	void Application::InitWindow() {
+		glutInitWindowPosition(ScreenSize().x / 2 - screen.Width() / 2, ScreenSize().y / 2 - screen.Height() / 2);
+		glutInitWindowSize(screen.Width(), screen.Height());
+		glutCreateWindow("Core");
+	}
+
+	void Application::InitWindowSize(int width, int height) {
+		glutReshapeWindow(width, height);
+	}
 
 	void Application::InitGlView(int width, int height, int glWidth, int glHeight) {
 		glViewport(0, 0, width, height);
@@ -92,6 +95,11 @@ namespace Core {
 
 	void Application::OnResize(int width, int height) {
 		screen.OnResize(width, height);
+		OnResize();
+	}
+
+	void Application::OnResize() {
+		InitWindowSize(screen.Width(), screen.Height());
 		InitGlView(screen.Width(), screen.Height(), screen.GLWidth(), screen.GLHeight());
 	}
 
@@ -121,5 +129,17 @@ namespace Core {
 
 	void Application::AddWidget(Widget *widget) {
 		_widgets.push_back(widget);
+	}
+
+	IPoint Application::ScreenSize() {
+		return IPoint(glutGet(GLUT_SCREEN_WIDTH), glutGet(GLUT_SCREEN_HEIGHT));
+	};
+
+	void Application::SetWindowPos(IPoint pos) {
+	}
+
+	void Application::SwitchFullScreen() {
+		OnResize(ScreenSize().x, ScreenSize().y);
+		glutFullScreen();
 	}
 };

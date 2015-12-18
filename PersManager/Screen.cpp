@@ -17,8 +17,8 @@ namespace Core {
 
 	Screen::Screen() :
 		_fps(30),
-		_width(100),
-		_height(100),
+		_width(640),
+		_height(480),
 		_glWidth(200),
 		_glHeight(200),
 		_fixed(true),
@@ -83,10 +83,10 @@ namespace Core {
 
 	void Screen::OnResize(int width, int height) {
 		if (_fixed) {
-			SetSize(width, height);
+			_width = width;
+			_height = height;
 			SetGlSize(_glWidth, _glHeight);
-		}
-		else {
+		} else {
 			int oldW = _width;
 			int oldH = _height;
 

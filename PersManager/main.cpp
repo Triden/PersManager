@@ -21,7 +21,12 @@ void KeyPressGL(unsigned char key, int x, int y) {
 }
 
 void OnReshape(GLint newWidth, GLint newHeight) {
-	Core::application.OnResize(newWidth, newHeight);
+	static bool inited = false;	//Костыль для предотвращения изменения размера после запуска приложения
+	if (!inited) {
+		inited = true;
+	} else {
+		Core::application.OnResize(newWidth, newHeight);
+	}
 }
 
 void Empty() {
@@ -30,12 +35,10 @@ void Empty() {
 int main(int argc, char **argv)
 {
 	Core::application.OnStart();
-	
+	Core::application.InitOpenGlContex(argc, argv);
+	Core::application.InitWindow();
 	Core::application.AddWidget(new GameField());
-
-	glutInit(&argc, argv);
-	Core::application.InitOpenGlContex();
-
+	
 	// register callbacks
 	glutDisplayFunc(Empty);
 	glutKeyboardFunc(KeyPressGL);
@@ -43,6 +46,7 @@ int main(int argc, char **argv)
 	glutPassiveMotionFunc(MouseMoveGL);
 	glutReshapeFunc(OnReshape);
 	glutTimerFunc(Core::screen.UpdateRate(), UpdateGL, 0);	//UpdateGL callback
+
 	glutMainLoop();
 
 	return 0;

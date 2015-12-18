@@ -13,4 +13,8 @@ public:
 	virtual void MouseMove(const IPoint& mousePos);
 	virtual void MouseUp(const IPoint& mousePos);
 	virtual void KeyPress(unsigned char key);
+
+	void SetWindowParams();
+	void Save();
+	void Load();
 };
