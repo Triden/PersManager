@@ -10,8 +10,8 @@ namespace Core {
 	private:
 		int _width;
 		int _height;
-		int _glWidth;
-		int _glHeight;
+		float _glWidth;
+		float _glHeight;
 		int _fps;
 		bool _fixed;
 		float _ONE_SECOND;
@@ -19,13 +19,13 @@ namespace Core {
 		Screen();
 		Screen(int fps, int screenWidth, int screenHeight, int glWidth, int glHeight);
 		void SetSize(int width, int height);
-		void SetGlSize(int glWidth, int glHeight);
+		void SetGlSize(float glWidth, float glHeight);
 		void SetFPS(int fps);
 		void SetFixed(bool fixed);
 		int Width();
 		int Height();
-		int GLWidth();
-		int GLHeight();
+		float GLWidth();
+		float GLHeight();
 		int FPS();
 		bool Fixed();
 		float OneSecond();

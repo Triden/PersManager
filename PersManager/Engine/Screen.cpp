@@ -32,7 +32,7 @@ namespace Core {
 		_height = height;
 	}
 
-	void Screen::SetGlSize(int glWidth, int glHeight) {
+	void Screen::SetGlSize(float glWidth, float glHeight) {
 		_glWidth = glWidth;
 		_glHeight = glHeight;
 	}
@@ -53,11 +53,11 @@ namespace Core {
 		return _height;
 	}
 
-	int Screen::GLWidth() {
+	float Screen::GLWidth() {
 		return _glWidth;
 	}
 
-	int Screen::GLHeight() {
+	float Screen::GLHeight() {
 		return _glHeight;
 	}
 
@@ -90,8 +90,8 @@ namespace Core {
 			int oldW = _width;
 			int oldH = _height;
 
-			int oldGW = _glWidth;
-			int oldGH = _glHeight;
+			float oldGW = _glWidth;
+			float oldGH = _glHeight;
 
 			SetSize(width, height);
 
