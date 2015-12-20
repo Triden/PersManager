@@ -36,7 +36,6 @@ int main(int argc, char **argv)
 {
 	Core::application.OnStart();
 	Core::application.InitOpenGlContex(argc, argv);
-	Core::application.InitWindow();
 	Core::application.AddWidget(new GameField());
 	
 	// register callbacks

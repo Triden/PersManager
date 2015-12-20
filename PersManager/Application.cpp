@@ -25,6 +25,8 @@ namespace Core {
 
 		glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 		
+		InitWindow();
+
 		InitGlView(screen.Width(), screen.Height(), screen.GLWidth(), screen.GLHeight());
 		glewInit();	
 	};
