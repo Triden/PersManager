@@ -1,72 +1,140 @@
 #include "Writer.h"
 
-#include "rapidxml\rapidxml.hpp"
-#include "rapidxml\rapidxml_print.hpp"
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <vector>
+#include "Assertion.h"
 
 namespace Core {
-	void Writer::Save() {
-		using namespace rapidxml;
-		xml_document<> doc;    // character type defaults to char
-		doc.parse<0>("");    // 0 means default parse flags
 
-							 //declaration
-		xml_node<>* decl = doc.allocate_node(node_declaration);
-		decl->append_attribute(doc.allocate_attribute("version", "1.0"));
-		decl->append_attribute(doc.allocate_attribute("encoding", "utf-8"));
-		doc.append_node(decl);
+	XmlNode::XmlNode(xml_node<>* node, xml_document<>* doc) :
+		_doc(doc),
+		_node(node)
+	{
 
-		//root
-		xml_node<>* root = doc.allocate_node(node_element, "root");
-		root->append_attribute(doc.allocate_attribute("type", "example"));
-		doc.append_node(root);
+	}
 
-		// child node
-		xml_node<>* child = doc.allocate_node(node_element, "child");
-		child->append_attribute(doc.allocate_attribute("test", "2"));
-		root->append_node(child);
+	void XmlNode::AddParameter(char* param, char* value) {
+		_node->append_attribute(_doc->allocate_attribute(param, value));
+	}
 
+	xml_node<>* XmlNode::GetNode() {
+		return _node;
+	}
+
+	void XmlNode::Apply() {
+		_doc->append_node(_node);
+	}
+
+	void XmlNode::ApplyTo(XmlNode* node) {
+		node->GetNode()->append_node(_node);
+	}
+
+	std::string XmlNode::GetValue(char* param) {
+		return _node->first_attribute(param)->value();
+	}
+
+
+	//========================XmlFile============================
+
+	XmlFile::XmlFile(const std::string& path) :
+		_path(path)
+	{
+		_doc.parse<0>("");    // 0 means default parse flags
+	}
+
+	XmlNode* XmlFile::AddNode(const char* nodeName) {
+		_list.push_back(XmlNode(_doc.allocate_node(node_element, nodeName), &_doc));
+		return &_list.back();
+	}
+
+	XmlNode* XmlFile::AddDeclaration() {
+		_list.push_back(XmlNode(_doc.allocate_node(node_declaration), &_doc));
+		return &_list.back();
+	}
+
+	void XmlFile::Save() {
 		std::ofstream file;
-		file.open("example.xml");
-		file << doc;
-	};
+		file.open(_path);
+		file << _doc;
+	}
 
-	void Writer::Load() {
-		using namespace rapidxml;
+	void XmlFile::Open() {
 		std::string input = "";
 		std::string line = "";
-		std::ifstream file("example.xml");
+		std::ifstream file(_path);
+		size_t MAX_SIZE = std::string().max_size();
 		while (std::getline(file, line)) {
+			if (line.length() > MAX_SIZE - input.length()) {
+				Assert(false);
+			}
 			input += line;
 		}
 
-		std::vector<char> xml_copy(input.begin(), input.end());
-		xml_copy.push_back('\0');
-
-		// only use xml_copy from here on!
-		xml_document<> doc;
 		// we are choosing to parse the XML declaration
 		// parse_no_data_nodes prevents RapidXML from using the somewhat surprising
 		// behavior of having both values and data nodes, and having data nodes take
 		// precedence over values when printing
 		// >>> note that this will skip parsing of CDATA nodes <<<
-		doc.parse<parse_declaration_node | parse_no_data_nodes>(&xml_copy[0]);
 
-		std::string encoding = doc.first_node()->first_attribute("encoding")->value();
-		// encoding == "utf-8"
+		_data.resize(input.size());
+		memcpy(&_data[0], &input[0], input.size() * sizeof(char));
+		_data.push_back('\0');
 
-		// we didn't keep track of our previous traversal, so let's start again
-		// we can match nodes by name, skipping the xml declaration entirely
-		xml_node<>* cur_node = doc.first_node("root");
-		std::string root = cur_node->first_attribute("type")->value();
-		//example
+		_doc.parse<parse_declaration_node | parse_no_data_nodes>(&_data[0]);
+	}
 
-		cur_node = cur_node->first_node("child");
-		std::string test = cur_node->first_attribute("test")->value();
+	XmlNode* XmlFile::GetNode(const char* nodeName) {
+		_list.push_back(XmlNode(_doc.first_node(nodeName), &_doc));
+		return &_list.back();
+	}
 
+	XmlNode* XmlFile::GetNodeFrom(XmlNode* node, const char* nodeName) {
+		_list.push_back(XmlNode(node->GetNode()->first_node(nodeName), &_doc));
+		return &_list.back();
+	}
 
+	XmlNode* XmlFile::GetDeclaration() {
+		xml_node<>* node = _doc.first_node();
+		_list.push_back(XmlNode(_doc.first_node(), &_doc));
+		return &_list.back();
+	}
+
+	//========================Writer============================
+
+	void Writer::Save() {
+		XmlFile xmlFile("example.xml");
+
+		//declaration
+		XmlNode* node = xmlFile.AddDeclaration();
+		node->AddParameter("version", "1.0");
+		node->AddParameter("encoding", "utf-8");
+		node->Apply();
+
+		//root
+		XmlNode* root = xmlFile.AddNode("root");
+		root->AddParameter("type", "example");
+		root->Apply();
+
+		// child node
+		XmlNode* child = xmlFile.AddNode("child");
+		child->AddParameter("test", "2");
+		child->ApplyTo(root);
+
+		xmlFile.Save();
+	};
+
+	void Writer::Load() {
+		XmlFile xmlFile("example.xml");
+		xmlFile.Open();
+
+		XmlNode *node = xmlFile.GetDeclaration();
+		std::string encoding = node->GetValue("encoding");
+
+		XmlNode *rootXml = xmlFile.GetNode("root");
+		std::string root = rootXml->GetValue("type");
+		
+		XmlNode *childXml = xmlFile.GetNodeFrom(rootXml, "child");
+		std::string test = childXml->GetValue("test");
 	};
 };
