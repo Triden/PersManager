@@ -1,7 +1,7 @@
 #pragma once
-#include "Core.h"
-#include "Math.h"
-#include "Widget.h"
+#include "Engine/Core.h"
+#include "Engine/Math.h"
+#include "Engine/Widget.h"
 
 class GameField : public Core::Widget {
 public:

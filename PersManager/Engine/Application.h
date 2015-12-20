@@ -8,8 +8,8 @@
 #include "Widget.h"
 #include <vector>
 
-#include "..\Dependencies\glew\glew.h"
-#include "..\Dependencies\freeglut\freeglut.h"
+#include "..\..\Dependencies\glew\glew.h"
+#include "..\..\Dependencies\freeglut\freeglut.h"
 
 namespace Core {
 	class Application {

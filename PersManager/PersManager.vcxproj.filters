@@ -13,66 +13,48 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Заголовочные файлы\Engine">
-      <UniqueIdentifier>{d17f2029-5233-43fd-873f-4da00ac2e56f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Файлы исходного кода\Engine">
-      <UniqueIdentifier>{f9d4aae3-7899-4e96-a0a6-cc1e1fc7b718}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Заголовочные файлы\rapidxml">
       <UniqueIdentifier>{e034ca5c-4cd4-4325-b34d-1260d035544d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Engine">
+      <UniqueIdentifier>{fd329a65-a8a6-4314-97ca-a7541c517bc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\Engine">
+      <UniqueIdentifier>{e7e07c54-ef49-485c-bf88-7df1ab7496af}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="Math.cpp">
-      <Filter>Файлы исходного кода\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Core.cpp">
-      <Filter>Файлы исходного кода\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Screen.cpp">
-      <Filter>Файлы исходного кода\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Application.cpp">
-      <Filter>Файлы исходного кода\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Widget.cpp">
-      <Filter>Файлы исходного кода\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="GameField.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="Render.cpp">
+    <ClCompile Include="Engine\Application.cpp">
       <Filter>Файлы исходного кода\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Writer.cpp">
+    <ClCompile Include="Engine\Core.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Math.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Render.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Screen.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Widget.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Writer.cpp">
       <Filter>Файлы исходного кода\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Math.h">
-      <Filter>Заголовочные файлы\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Core.h">
-      <Filter>Заголовочные файлы\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Screen.h">
-      <Filter>Заголовочные файлы\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Application.h">
-      <Filter>Заголовочные файлы\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Widget.h">
-      <Filter>Заголовочные файлы\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="GameField.h">
       <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="Render.h">
-      <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
     <ClInclude Include="rapidxml\rapidxml.hpp">
       <Filter>Заголовочные файлы\rapidxml</Filter>
@@ -86,10 +68,28 @@
     <ClInclude Include="rapidxml\rapidxml_utils.hpp">
       <Filter>Заголовочные файлы\rapidxml</Filter>
     </ClInclude>
-    <ClInclude Include="Writer.h">
+    <ClInclude Include="Engine\Application.h">
       <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Assertion.h">
+    <ClInclude Include="Engine\Assertion.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Core.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Render.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Screen.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Widget.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Writer.h">
       <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
   </ItemGroup>

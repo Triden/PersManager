@@ -3,8 +3,8 @@
 #pragma once
 #include "Math.h"
 
-#include "..\Dependencies\glew\glew.h"
-#include "..\Dependencies\freeglut\freeglut.h"
+#include "..\..\Dependencies\glew\glew.h"
+#include "..\..\Dependencies\freeglut\freeglut.h"
 
 namespace Core {
 	class Render {

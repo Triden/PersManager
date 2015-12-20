@@ -19,30 +19,30 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Engine\Application.cpp" />
+    <ClCompile Include="Engine\Core.cpp" />
+    <ClCompile Include="Engine\Math.cpp" />
+    <ClCompile Include="Engine\Render.cpp" />
+    <ClCompile Include="Engine\Screen.cpp" />
+    <ClCompile Include="Engine\Widget.cpp" />
+    <ClCompile Include="Engine\Writer.cpp" />
     <ClCompile Include="GameField.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Math.cpp" />
-    <ClCompile Include="Render.cpp" />
-    <ClCompile Include="Screen.cpp" />
-    <ClCompile Include="Widget.cpp" />
-    <ClCompile Include="Writer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="Assertion.h" />
-    <ClInclude Include="Core.h" />
+    <ClInclude Include="Engine\Application.h" />
+    <ClInclude Include="Engine\Assertion.h" />
+    <ClInclude Include="Engine\Core.h" />
+    <ClInclude Include="Engine\Math.h" />
+    <ClInclude Include="Engine\Render.h" />
+    <ClInclude Include="Engine\Screen.h" />
+    <ClInclude Include="Engine\Widget.h" />
+    <ClInclude Include="Engine\Writer.h" />
     <ClInclude Include="GameField.h" />
-    <ClInclude Include="Math.h" />
     <ClInclude Include="rapidxml\rapidxml.hpp" />
     <ClInclude Include="rapidxml\rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml\rapidxml_print.hpp" />
     <ClInclude Include="rapidxml\rapidxml_utils.hpp" />
-    <ClInclude Include="Render.h" />
-    <ClInclude Include="Screen.h" />
-    <ClInclude Include="Widget.h" />
-    <ClInclude Include="Writer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{352A9422-8AB4-4401-9A40-C86928E1C9CF}</ProjectGuid>
