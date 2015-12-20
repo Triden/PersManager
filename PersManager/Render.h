@@ -1,3 +1,5 @@
+#ifndef ENGINE_RENDER
+#define ENFINE_RENDER
 #pragma once
 #include "Math.h"
 
@@ -12,3 +14,4 @@ namespace Core {
 	};
 	extern Render render;
 };
+#endif

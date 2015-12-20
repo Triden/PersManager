@@ -1,3 +1,6 @@
+#ifndef ENGINE_WIDGET
+#define ENFINE_WIDGET
+
 #pragma once
 #include "Math.h"
 
@@ -14,3 +17,4 @@ namespace Core {
 		virtual void KeyPress(unsigned char key) = 0;
 	};
 }
+#endif

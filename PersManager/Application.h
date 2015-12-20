@@ -1,3 +1,6 @@
+#ifndef ENGINE_APPLICATION
+#define ENGINE_APPLICATION
+
 #pragma once
 
 #include "Screen.h"
@@ -38,3 +41,5 @@ namespace Core {
 	};
 	extern Application application;
 };
+
+#endif

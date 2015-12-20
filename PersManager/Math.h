@@ -1,3 +1,6 @@
+#ifndef ENGINE_MATH
+#define ENFINE_MATH
+
 #pragma once
 #include <algorithm>
 
@@ -38,3 +41,5 @@ public:
 		height(height)
 	{}
 };
+
+#endif

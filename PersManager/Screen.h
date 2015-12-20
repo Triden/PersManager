@@ -1,3 +1,6 @@
+#ifndef ENGINE_SCREEN
+#define ENFINE_SCREEN
+
 #pragma once
 
 #include "Math.h"
@@ -32,3 +35,4 @@ namespace Core {
 	};
 	extern Screen screen;
 };
+#endif

@@ -1,3 +1,6 @@
+#ifndef ENGINE_WRITER
+#define ENGINE_WRITER
+
 #pragma once
 
 #include "rapidxml\rapidxml.hpp"
@@ -47,3 +50,4 @@ namespace Core {
 	};
 	extern Writer writer;
 };
+#endif
