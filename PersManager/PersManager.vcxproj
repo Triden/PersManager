@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Assertion.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="GameField.h" />
     <ClInclude Include="Math.h" />

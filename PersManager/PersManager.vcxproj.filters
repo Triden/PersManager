@@ -89,5 +89,8 @@
     <ClInclude Include="Writer.h">
       <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Assertion.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
