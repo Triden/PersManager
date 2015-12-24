@@ -14,7 +14,7 @@ namespace Core {
 
 	}
 
-	void XmlNode::AddParameter(char* param, char* value) {
+	void XmlNode::AddParameter(const char* param, const char* value) {
 		_node->append_attribute(_doc->allocate_attribute(param, value));
 	}
 
@@ -34,7 +34,6 @@ namespace Core {
 		return _node->first_attribute(param)->value();
 	}
 
-
 	//========================XmlFile============================
 
 	XmlFile::XmlFile(const std::string& path) :
@@ -44,12 +43,20 @@ namespace Core {
 	}
 
 	XmlNode* XmlFile::AddNode(const char* nodeName) {
-		_list.push_back(XmlNode(_doc.allocate_node(node_element, nodeName), &_doc));
+		xml_node<>* xmlNode = _doc.allocate_node(node_element, nodeName);
+		if (xmlNode == NULL) {
+			return NULL;
+		}
+		_list.push_back(XmlNode(xmlNode, &_doc));
 		return &_list.back();
 	}
 
 	XmlNode* XmlFile::AddDeclaration() {
-		_list.push_back(XmlNode(_doc.allocate_node(node_declaration), &_doc));
+		xml_node<>* xmlNode = _doc.allocate_node(node_declaration);
+		if (xmlNode == NULL) {
+			return NULL;
+		}
+		_list.push_back(XmlNode(xmlNode, &_doc));
 		return &_list.back();
 	}
 
@@ -85,24 +92,44 @@ namespace Core {
 	}
 
 	XmlNode* XmlFile::GetNode(const char* nodeName) {
-		_list.push_back(XmlNode(_doc.first_node(nodeName), &_doc));
+		xml_node<>* xmlNode = _doc.first_node(nodeName);
+		if (xmlNode == NULL) {
+			return NULL;
+		}
+		_list.push_back(XmlNode(xmlNode, &_doc));
 		return &_list.back();
 	}
 
 	XmlNode* XmlFile::GetNodeFrom(XmlNode* node, const char* nodeName) {
-		_list.push_back(XmlNode(node->GetNode()->first_node(nodeName), &_doc));
+		xml_node<>* xmlNode = node->GetNode()->first_node(nodeName);
+		if (xmlNode == NULL) {
+			return NULL;
+		}
+		_list.push_back(XmlNode(xmlNode, &_doc));
+		return &_list.back();
+	}
+
+	XmlNode* XmlFile::GetNextNodeFrom(XmlNode* node, const char* nodeName) {
+		xml_node<>* xmlNode = node->GetNode()->next_sibling(nodeName);
+		if (xmlNode == NULL) {
+			return NULL;
+		}
+		_list.push_back(XmlNode(xmlNode, &_doc));
 		return &_list.back();
 	}
 
 	XmlNode* XmlFile::GetDeclaration() {
 		xml_node<>* node = _doc.first_node();
+		if (node == NULL) {
+			return NULL;
+		}
 		_list.push_back(XmlNode(_doc.first_node(), &_doc));
 		return &_list.back();
 	}
 
-	//========================Writer============================
+	//========================Example============================
 
-	void Writer::Save() {
+	void Example::Save() {
 		XmlFile xmlFile("example.xml");
 
 		//declaration
@@ -117,14 +144,18 @@ namespace Core {
 		root->Apply();
 
 		// child node
-		XmlNode* child = xmlFile.AddNode("child");
-		child->AddParameter("test", "2");
-		child->ApplyTo(root);
-
+		
+		for (int i = 0; i < 10; ++i) {
+			XmlNode* child = xmlFile.AddNode("child");
+			const std::string line = std::to_string(i);
+			child->AddParameter("test", "1");
+			child->ApplyTo(root);
+		}
+		
 		xmlFile.Save();
 	};
 
-	void Writer::Load() {
+	void Example::Load() {
 		XmlFile xmlFile("example.xml");
 		xmlFile.Open();
 
@@ -135,6 +166,10 @@ namespace Core {
 		std::string root = rootXml->GetValue("type");
 		
 		XmlNode *childXml = xmlFile.GetNodeFrom(rootXml, "child");
-		std::string test = childXml->GetValue("test");
+		int i = 0;
+		for (; childXml != NULL; childXml = xmlFile.GetNextNodeFrom(childXml, "child")) {
+			std::string test = childXml->GetValue("test");
+			++i;
+		}
 	};
 };

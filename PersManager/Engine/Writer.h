@@ -10,7 +10,7 @@
 
 namespace Core {
 	using namespace rapidxml;
-	class Writer {
+	class Example {
 	public:
 		void Save();
 		void Load();
@@ -22,7 +22,7 @@ namespace Core {
 	public:
 		XmlNode(xml_node<>* node, xml_document<>* doc);
 		//Save
-		void AddParameter(char* param, char* value);
+		void AddParameter(const char* param, const char* value);
 		xml_node<>* GetNode();
 		void Apply();
 		void ApplyTo(XmlNode* node);
@@ -46,8 +46,9 @@ namespace Core {
 		void Open();
 		XmlNode* GetNode(const char* nodeName);
 		XmlNode* GetNodeFrom(XmlNode* node, const char* nodeName);
+		XmlNode* GetNextNodeFrom(XmlNode* node, const char* nodeName);
 		XmlNode* GetDeclaration();
 	};
-	extern Writer writer;
+	extern Example writer;
 };
 #endif
