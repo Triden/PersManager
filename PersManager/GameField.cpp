@@ -2,6 +2,7 @@
 
 GameField::GameField() 
 {
+	Core::screen.SetFixed(false);
 }
 
 GameField::~GameField() {
@@ -30,11 +31,7 @@ void GameField::KeyPress(unsigned char key) {
 };
 
 void GameField::SetWindowParams() {
-	Core::screen.SetFixed(true);
-	IPoint screenSize(Core::application.ScreenSize());
-	Core::screen.SetSize(screenSize.x / 2, screenSize.y / 2);
-	Core::application.OnResize();
-	Core::application.SetWindowPos(IPoint(0, 0));
+
 }
 
 void GameField::Save() {

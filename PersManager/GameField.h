@@ -1,4 +1,7 @@
-#pragma once
+#ifndef GAMEFIELD
+#define GAMEFIELD
+
+
 #include "Engine/Core.h"
 #include "Engine/Math.h"
 #include "Engine/Widget.h"
@@ -18,3 +21,5 @@ public:
 	void Save();
 	void Load();
 };
+
+#endif

@@ -1,7 +1,6 @@
 #ifndef ENGINE_CORE
-#define ENFINE_CORE
+#define ENGINE_CORE
 
-#pragma once
 #include "Screen.h"
 #include "Application.h"
 #include "Widget.h"

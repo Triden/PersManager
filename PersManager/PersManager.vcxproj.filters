@@ -92,5 +92,8 @@
     <ClInclude Include="Engine\Writer.h">
       <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Types.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

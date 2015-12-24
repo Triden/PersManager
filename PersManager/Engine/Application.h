@@ -1,8 +1,6 @@
 #ifndef ENGINE_APPLICATION
 #define ENGINE_APPLICATION
 
-#pragma once
-
 #include "Screen.h"
 #include "Math.h"
 #include "Widget.h"

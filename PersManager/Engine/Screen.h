@@ -1,7 +1,5 @@
 #ifndef ENGINE_SCREEN
-#define ENFINE_SCREEN
-
-#pragma once
+#define ENGINE_SCREEN
 
 #include "Math.h"
 

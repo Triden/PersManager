@@ -1,6 +1,6 @@
 #ifndef ENGINE_RENDER
-#define ENFINE_RENDER
-#pragma once
+#define ENGINE_RENDER
+
 #include "Math.h"
 
 #include "..\..\Dependencies\glew\glew.h"

@@ -1,7 +1,6 @@
 #ifndef ENGINE_WIDGET
-#define ENFINE_WIDGET
+#define ENGINE_WIDGET
 
-#pragma once
 #include "Math.h"
 
 namespace Core {

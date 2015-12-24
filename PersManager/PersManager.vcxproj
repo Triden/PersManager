@@ -36,6 +36,7 @@
     <ClInclude Include="Engine\Math.h" />
     <ClInclude Include="Engine\Render.h" />
     <ClInclude Include="Engine\Screen.h" />
+    <ClInclude Include="Engine\Types.h" />
     <ClInclude Include="Engine\Widget.h" />
     <ClInclude Include="Engine\Writer.h" />
     <ClInclude Include="GameField.h" />

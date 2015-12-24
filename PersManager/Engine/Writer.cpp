@@ -2,8 +2,8 @@
 
 #include <fstream>
 #include <iostream>
-#include <string>
 #include "Assertion.h"
+#include "Types.h"
 
 namespace Core {
 
@@ -144,11 +144,12 @@ namespace Core {
 		root->Apply();
 
 		// child node
-		
-		for (int i = 0; i < 10; ++i) {
+		std::vector<char *> test = {
+			"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
+		};
+		for (int i = 0; i < test.size(); ++i) {
 			XmlNode* child = xmlFile.AddNode("child");
-			const std::string line = std::to_string(i);
-			child->AddParameter("test", "1");
+			child->AddParameter("test", test[i]);
 			child->ApplyTo(root);
 		}
 		

@@ -1,7 +1,5 @@
 #ifndef ENGINE_ASSERT
-#define ENFINE_ASSERT
-
-#pragma once
+#define ENGINE_ASSERT
 
 #include <assert.h>
 

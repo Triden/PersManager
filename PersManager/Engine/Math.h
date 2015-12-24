@@ -1,7 +1,6 @@
 #ifndef ENGINE_MATH
-#define ENFINE_MATH
+#define ENGINE_MATH
 
-#pragma once
 #include <algorithm>
 
 class IPoint {
