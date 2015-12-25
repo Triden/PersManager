@@ -7,6 +7,8 @@
 #include "Engine/Widget.h"
 
 class GameField : public Core::Widget {
+private:
+	Core::Button _button;
 public:
 	GameField();
 	virtual ~GameField();

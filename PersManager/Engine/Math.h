@@ -39,6 +39,13 @@ public:
 		width(width),
 		height(height)
 	{}
+
+	bool Contain(const IPoint& point) {
+		return (point.x > x &&
+				point.y > y &&
+				point.x < x + width &&
+				point.y < y + height);
+	}
 };
 
 #endif

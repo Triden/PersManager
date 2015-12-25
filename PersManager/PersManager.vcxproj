@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Application.cpp" />
+    <ClCompile Include="Engine\Button.cpp" />
     <ClCompile Include="Engine\Core.cpp" />
     <ClCompile Include="Engine\Math.cpp" />
     <ClCompile Include="Engine\Render.cpp" />
@@ -32,6 +33,7 @@
   <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
     <ClInclude Include="Engine\Assertion.h" />
+    <ClInclude Include="Engine\Button.h" />
     <ClInclude Include="Engine\Core.h" />
     <ClInclude Include="Engine\Math.h" />
     <ClInclude Include="Engine\Render.h" />

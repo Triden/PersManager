@@ -3,7 +3,13 @@
 
 #include <assert.h>
 
-void Assert(bool value) {
+inline void Assert(bool value) {
 	assert(value);
-}
+};
+
+class Obj {
+public:
+	Obj() { ; };
+};
+
 #endif

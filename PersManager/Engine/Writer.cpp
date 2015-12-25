@@ -1,9 +1,8 @@
 #include "Writer.h"
-
 #include <fstream>
 #include <iostream>
-#include "Assertion.h"
 #include "Types.h"
+#include "Assertion.h"
 
 namespace Core {
 
@@ -11,7 +10,6 @@ namespace Core {
 		_doc(doc),
 		_node(node)
 	{
-
 	}
 
 	void XmlNode::AddParameter(const char* param, const char* value) {

@@ -51,6 +51,9 @@
     <ClCompile Include="Engine\Writer.cpp">
       <Filter>Файлы исходного кода\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Button.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameField.h">
@@ -93,6 +96,9 @@
       <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Types.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Button.h">
       <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
   </ItemGroup>

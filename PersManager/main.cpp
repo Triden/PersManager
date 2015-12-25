@@ -43,6 +43,7 @@ int main(int argc, char **argv)
 	glutKeyboardFunc(KeyPressGL);
 	glutMouseFunc(MouseGL);
 	glutPassiveMotionFunc(MouseMoveGL);
+	glutMotionFunc(MouseMoveGL);
 	glutReshapeFunc(OnReshape);
 	glutTimerFunc(Core::screen.UpdateRate(), UpdateGL, 0);	//UpdateGL callback
 
