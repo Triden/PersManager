@@ -34,6 +34,7 @@ int main(int argc, char **argv)
 {
 	Core::application.OnStart();
 	Core::application.InitOpenGlContex(argc, argv);
+	Core::resourceManager.Load("PolyObjects.xml");
 	Core::application.AddWidget(new GameMain());
 	
 	// register callbacks

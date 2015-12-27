@@ -37,11 +37,3 @@ void GameMain::KeyPress(unsigned char key) {
 void GameMain::SetWindowParams() {
 
 }
-
-void GameMain::Save() {
-	Core::writer.Save();
-}
-
-void GameMain::Load() {
-	Core::writer.Load();
-}

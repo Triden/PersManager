@@ -1,12 +1,22 @@
 #ifndef ENGINE_TYPES
 #define ENGINE_TYPES
 #include <string>
+#include <map>
 
 namespace Int {
 	inline std::string ToString(const int& i) {
 		return std::to_string(i);
 	};
 };
+
+namespace String {
+	inline int ToInt(const std::string& str) {
+		return std::stoi(str);
+	}
+	inline float ToFloat(const std::string& str) {
+		return std::stof(str);
+	}
+}
 
 class Color {
 public:

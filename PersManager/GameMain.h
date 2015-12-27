@@ -18,8 +18,6 @@ public:
 	virtual void KeyPress(unsigned char key);
 
 	void SetWindowParams();
-	void Save();
-	void Load();
 };
 
 #endif

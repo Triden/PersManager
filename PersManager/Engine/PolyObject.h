@@ -9,10 +9,19 @@ namespace Core {
 	private:
 		std::string _id;
 		std::vector<FPolygon> _polygons;
+		FPoint _min;
+		FPoint _max;
 	public:
 		PolyObject();
-		void Draw();
-		const std::string& GetId() { return _id; }
+		void Draw(const FPoint& pos);
+		const std::string& GetId() const { return _id; }
+		bool Default();
+		void AddPolygon(const FPolygon& polygon, bool recalcMaxAndMin = true);
+		FPoint GetSize();	//¬озвращает разницу между максимальными и минимальными x y
+		FPoint GetMin();
+		FPoint GetMax();
+		void MakeMinAndMax();	//ѕересчитывает максимальный и минимальный x y
+		void Scale(float scale);
 	};
 };
 

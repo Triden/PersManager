@@ -29,6 +29,10 @@ namespace Core {
 	}
 
 	std::string XmlNode::GetValue(char* param) {
+		if (_node->first_attribute(param) == NULL) {
+			Assert(false);
+			return "";
+		}
 		return _node->first_attribute(param)->value();
 	}
 

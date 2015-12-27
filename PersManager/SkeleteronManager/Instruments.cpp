@@ -1,6 +1,8 @@
 #include "Instruments.h"
 #include "Instruments.h"
 
+#include "..\Engine\Assertion.h"
+
 #define SKELETON_INSTRUMENTS_W 60
 #define SKELETON_INSTRUMENTS_H 120
 
@@ -45,6 +47,14 @@ void SkeletonInstrumentsPanel::Draw() {
 	Panel::Draw();
 	for (int i = 0; i < (int)_buttons.size(); ++i) {
 		_buttons[i]->Draw();
+	}
+	Core::PolyObject *poly = Core::resourceManager.GetPoly("bone");
+	if (poly != NULL) {
+		Core::render.SetPolygonMode(POLY_FILL);
+		poly->Draw(FPoint(GetBorderedRect().x - poly->GetMin().x + 3, GetBorderedRect().y - poly->GetMin().y + 7));
+		Core::render.ResetPolygonMode();
+	} else {
+		Assert(false);
 	}
 }
 

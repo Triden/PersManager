@@ -25,7 +25,7 @@ namespace Core {
 		Render() {}
 		void DrawLine(IPoint pnt1, IPoint pnt2);	//Рисует линию
 		void DrawRect(const IRect& rect);	//Рисует пустой прямоугольник
-		void DrawPolygon(const FPolygon& poly);
+		void DrawPolygon(const FPolygon& poly, const FPoint& pos = FPoint(0.f, 0.f));
 		void SetLineWidth(int width);	//Ширина линии
 		void SetPolygonMode(PolygonMode pMode);
 		void ResetPolygonMode();
