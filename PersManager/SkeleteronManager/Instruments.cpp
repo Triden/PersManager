@@ -56,11 +56,12 @@ void SkeletonInstrumentsPanel::Update(float dt) {
 	}
 }
 
-void SkeletonInstrumentsPanel::MouseDown(const IPoint& pnt) {
-	Panel::MouseDown(pnt);
+bool SkeletonInstrumentsPanel::MouseDown(const IPoint& pnt) {
+	bool res = Panel::MouseDown(pnt);
 	for (int i = 0; i < (int)_buttons.size(); ++i) {
 		_buttons[i]->MouseDown(pnt);
 	}
+	return res;
 }
 
 void SkeletonInstrumentsPanel::MouseMove(const IPoint& pnt) {

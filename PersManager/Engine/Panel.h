@@ -14,7 +14,7 @@ namespace Core {
 		float _border;
 	public:
 		Panel(IRect rect, float border);
-		virtual void MouseDown(const IPoint& mousePos);
+		virtual bool MouseDown(const IPoint& mousePos);
 		virtual void MouseMove(const IPoint& mousePos);
 		virtual void MouseUp(const IPoint& mousePos);
 		virtual void KeyPress(unsigned char key);

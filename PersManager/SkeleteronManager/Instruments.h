@@ -15,7 +15,7 @@ public:
 	~SkeletonInstrumentsPanel();
 	virtual void Draw();
 	virtual void Update(float dt);
-	virtual void MouseDown(const IPoint& pnt);
+	virtual bool MouseDown(const IPoint& pnt);
 	virtual void MouseMove(const IPoint& pnt);
 	virtual void MouseUp(const IPoint& pnt);
 	virtual void MoveButtons();

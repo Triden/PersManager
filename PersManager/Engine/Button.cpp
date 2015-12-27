@@ -29,9 +29,10 @@ namespace Core {
 
 	}
 
-	void Button::MouseDown(const IPoint& mousePos) {
+	bool Button::MouseDown(const IPoint& mousePos) {
 		_mouseDown = _rect.Contain(mousePos);
 		_mouseMove = _mouseDown;
+		return _mouseDown;
 	}
 
 	void Button::MouseMove(const IPoint& mousePos) {

@@ -31,13 +31,13 @@ namespace Core {
 		return rect;
 	}
 
-	void Panel::MouseDown(const IPoint& mousePos) {
-		
+	bool Panel::MouseDown(const IPoint& mousePos) {
 		_mouseDown = GetCaptionRect().Contain(mousePos);
 		if (_mouseDown) {
 			_mousePress = mousePos;
 			_prevPos = IPoint(_rect.x, _rect.y);
 		}
+		return _mouseDown || _rect.Contain(mousePos);
 	};
 
 	void Panel::MouseMove(const IPoint& mousePos) {

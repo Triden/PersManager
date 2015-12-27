@@ -14,7 +14,7 @@ namespace Core {
 		virtual ~Button();
 		virtual void Draw();
 		virtual void Update(float dt);
-		virtual void MouseDown(const IPoint& mousePos);
+		virtual bool MouseDown(const IPoint& mousePos);
 		virtual void MouseMove(const IPoint& mousePos);
 		virtual void MouseUp(const IPoint& mousePos);
 		virtual void Create(const IRect& rect);
