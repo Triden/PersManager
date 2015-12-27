@@ -1,7 +1,5 @@
 #include "Engine/Core.h"
-#include "GameField.h"
-
-extern GameField gamefield;
+#include "GameMain.h"
 
 void UpdateGL(int value) {
 	Core::application.UpdateGL(value);
@@ -36,7 +34,7 @@ int main(int argc, char **argv)
 {
 	Core::application.OnStart();
 	Core::application.InitOpenGlContex(argc, argv);
-	Core::application.AddWidget(new GameField());
+	Core::application.AddWidget(new GameMain());
 	
 	// register callbacks
 	glutDisplayFunc(Empty);

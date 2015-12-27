@@ -1,6 +1,6 @@
-#include "GameField.h"
+#include "GameMain.h"
 
-GameField::GameField() 
+GameMain::GameMain() 
 {
 	Core::render.SetPolygonMode(POLY_FILL);
 	Core::render.SetLineWidth(1);
@@ -8,44 +8,44 @@ GameField::GameField()
 	_button.Create(IRect(100, 100, 20, 20));
 }
 
-GameField::~GameField() {
+GameMain::~GameMain() {
 };
 
-void GameField::Draw() {
+void GameMain::Draw() {
 	Core::render.DrawLine(IPoint(0, 0), IPoint(100, 100));
 	_button.Draw();
 };
 
-void GameField::Update(float dt) {
+void GameMain::Update(float dt) {
 	_button.Update(dt);
 };
 
-void GameField::MouseDown(const IPoint& mousePos) {
+void GameMain::MouseDown(const IPoint& mousePos) {
 	SetWindowParams();
 	Save();
 	_button.MouseDown(mousePos);
 };
 
-void GameField::MouseMove(const IPoint& mousePos) {
+void GameMain::MouseMove(const IPoint& mousePos) {
 	_button.MouseMove(mousePos);
 };
 
-void GameField::MouseUp(const IPoint& mousePos) {
+void GameMain::MouseUp(const IPoint& mousePos) {
 	Load();
 	_button.MouseUp(mousePos);
 };
 
-void GameField::KeyPress(unsigned char key) {
+void GameMain::KeyPress(unsigned char key) {
 };
 
-void GameField::SetWindowParams() {
+void GameMain::SetWindowParams() {
 
 }
 
-void GameField::Save() {
+void GameMain::Save() {
 	Core::writer.Save();
 }
 
-void GameField::Load() {
+void GameMain::Load() {
 	Core::writer.Load();
 }

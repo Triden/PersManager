@@ -27,7 +27,7 @@
     <ClCompile Include="Engine\Screen.cpp" />
     <ClCompile Include="Engine\Widget.cpp" />
     <ClCompile Include="Engine\Writer.cpp" />
-    <ClCompile Include="GameField.cpp" />
+    <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="Engine\Types.h" />
     <ClInclude Include="Engine\Widget.h" />
     <ClInclude Include="Engine\Writer.h" />
-    <ClInclude Include="GameField.h" />
+    <ClInclude Include="GameMain.h" />
     <ClInclude Include="rapidxml\rapidxml.hpp" />
     <ClInclude Include="rapidxml\rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml\rapidxml_print.hpp" />

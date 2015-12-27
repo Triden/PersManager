@@ -6,12 +6,12 @@
 #include "Engine/Math.h"
 #include "Engine/Widget.h"
 
-class GameField : public Core::Widget {
+class GameMain : public Core::Widget {
 private:
 	Core::Button _button;
 public:
-	GameField();
-	virtual ~GameField();
+	GameMain();
+	virtual ~GameMain();
 	virtual void Draw();
 	virtual void Update(float dt);
 	virtual void MouseDown(const IPoint& mousePos);
