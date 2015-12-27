@@ -5,4 +5,5 @@ namespace Core {
 	Application application;
 	Render render;
 	Example writer;
+	ResourceManager resourceManager;
 };

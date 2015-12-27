@@ -8,5 +8,7 @@
 #include "Writer.h"
 #include "Button.h"
 #include "Panel.h"
+#include "PolyObject.h"
+#include "ResourceManager.h"
 
 #endif

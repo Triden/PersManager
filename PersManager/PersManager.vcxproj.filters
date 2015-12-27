@@ -72,6 +72,12 @@
     <ClCompile Include="Engine\Panel.cpp">
       <Filter>Файлы исходного кода\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\PolyObject.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ResourceManager.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rapidxml\rapidxml.hpp">
@@ -129,6 +135,12 @@
       <Filter>Заголовочные файлы\SkeletonManager</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Panel.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\PolyObject.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ResourceManager.h">
       <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
   </ItemGroup>

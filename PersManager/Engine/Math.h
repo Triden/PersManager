@@ -20,6 +20,16 @@ public:
 	FPoint(float x, float y) : x(x), y(y) {}
 };
 
+class FPolygon {
+public:
+	FPoint v1;
+	FPoint v2;
+	FPoint v3;
+	FPolygon() :
+		v1(FPoint()), v2(FPoint()), v3(FPoint())
+	{}
+};
+
 class IRect {
 public:
 	int x;
