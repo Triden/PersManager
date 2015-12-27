@@ -6,7 +6,6 @@
 namespace Core {
 	class Button {
 	private:
-		bool _pressed;
 		bool _mouseDown;
 		bool _mouseMove;
 		IRect _rect;
