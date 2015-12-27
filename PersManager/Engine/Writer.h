@@ -4,7 +4,7 @@
 #include "..\rapidxml\rapidxml.hpp"
 #include "..\rapidxml\rapidxml_print.hpp"
 #include <list>
-#include <vector>
+#include "Math.h"
 
 namespace Core {
 	using namespace rapidxml;

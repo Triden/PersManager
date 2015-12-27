@@ -46,4 +46,9 @@ namespace Core {
 	void Button::Create(const IRect& rect) {
 		_rect = rect;
 	}
+
+	void Button::MoveTo(const IPoint& pos) {
+		_rect.x = pos.x;
+		_rect.y = pos.y;
+	}
 };

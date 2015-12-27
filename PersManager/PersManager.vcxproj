@@ -23,19 +23,25 @@
     <ClCompile Include="Engine\Button.cpp" />
     <ClCompile Include="Engine\Core.cpp" />
     <ClCompile Include="Engine\Math.cpp" />
+    <ClCompile Include="Engine\Panel.cpp" />
     <ClCompile Include="Engine\Render.cpp" />
     <ClCompile Include="Engine\Screen.cpp" />
+    <ClCompile Include="Engine\Types.cpp" />
     <ClCompile Include="Engine\Widget.cpp" />
     <ClCompile Include="Engine\Writer.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SkeleteronManager\Instruments.cpp" />
+    <ClCompile Include="SkeleteronManager\SkeletonManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
     <ClInclude Include="Engine\Assertion.h" />
     <ClInclude Include="Engine\Button.h" />
     <ClInclude Include="Engine\Core.h" />
+    <ClInclude Include="Engine\Include.h" />
     <ClInclude Include="Engine\Math.h" />
+    <ClInclude Include="Engine\Panel.h" />
     <ClInclude Include="Engine\Render.h" />
     <ClInclude Include="Engine\Screen.h" />
     <ClInclude Include="Engine\Types.h" />
@@ -46,6 +52,8 @@
     <ClInclude Include="rapidxml\rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml\rapidxml_print.hpp" />
     <ClInclude Include="rapidxml\rapidxml_utils.hpp" />
+    <ClInclude Include="SkeleteronManager\Instruments.h" />
+    <ClInclude Include="SkeleteronManager\SkeletonManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{352A9422-8AB4-4401-9A40-C86928E1C9CF}</ProjectGuid>

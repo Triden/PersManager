@@ -4,7 +4,6 @@
 #include "Screen.h"
 #include "Math.h"
 #include "Widget.h"
-#include <vector>
 
 #include "..\..\Dependencies\glew\glew.h"
 #include "..\..\Dependencies\freeglut\freeglut.h"

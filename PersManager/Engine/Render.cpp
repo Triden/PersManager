@@ -2,6 +2,28 @@
 #include "Assertion.h"
 
 namespace Core {
+	void Render::SetColor(Color color) {
+		SetColorMode(color);
+		_color.push_back(color);
+	}
+
+	void Render::ResetColor() {
+		if (_color.size() > 0) {
+			_color.pop_back();
+			if (_color.size() <= 0) {
+				//~Assert(false);
+			} else {
+				SetColorMode(_color.back());
+			}
+		} else {
+			Assert(false);
+		}
+	}
+
+	void Render::SetColorMode(Color color) {
+		glColor3f(color.r, color.g, color.b);
+	}
+
 	void Render::SetPolyMode(PolygonMode pMode) {
 		if (pMode == POLY_FILL) {
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -23,7 +45,7 @@ namespace Core {
 		if (_polygonMode.size() > 0) {
 			_polygonMode.pop_back();
 			if (_polygonMode.size() <= 0) {
-				Assert(false);
+				//~Assert(false);
 			} else {
 				SetPolyMode(_polygonMode.back());
 			}

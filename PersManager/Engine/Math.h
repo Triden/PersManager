@@ -2,6 +2,7 @@
 #define ENGINE_MATH
 
 #include <algorithm>
+#include <vector>
 
 class IPoint {
 public:

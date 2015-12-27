@@ -22,6 +22,12 @@
     <Filter Include="Файлы исходного кода\Engine">
       <UniqueIdentifier>{e7e07c54-ef49-485c-bf88-7df1ab7496af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Заголовочные файлы\SkeletonManager">
+      <UniqueIdentifier>{8593537b-470a-4a1b-9a4c-abf3ee56224d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\SkeletonManager">
+      <UniqueIdentifier>{ecd3a98e-8553-4b87-86a7-7fa37d22ab3c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,6 +59,18 @@
     </ClCompile>
     <ClCompile Include="GameMain.cpp">
       <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeleteronManager\SkeletonManager.cpp">
+      <Filter>Файлы исходного кода\SkeletonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeleteronManager\Instruments.cpp">
+      <Filter>Файлы исходного кода\SkeletonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Types.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Panel.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +118,18 @@
     </ClInclude>
     <ClInclude Include="GameMain.h">
       <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeleteronManager\SkeletonManager.h">
+      <Filter>Заголовочные файлы\SkeletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeleteronManager\Instruments.h">
+      <Filter>Заголовочные файлы\SkeletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Panel.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

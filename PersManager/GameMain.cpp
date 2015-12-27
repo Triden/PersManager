@@ -5,34 +5,30 @@ GameMain::GameMain()
 	Core::render.SetPolygonMode(POLY_FILL);
 	Core::render.SetLineWidth(1);
 	Core::screen.SetFixed(false);
-	_button.Create(IRect(100, 100, 20, 20));
+	
 }
 
 GameMain::~GameMain() {
 };
 
 void GameMain::Draw() {
-	Core::render.DrawLine(IPoint(0, 0), IPoint(100, 100));
-	_button.Draw();
+	_skeletonManager.Draw();
 };
 
 void GameMain::Update(float dt) {
-	_button.Update(dt);
+	_skeletonManager.Update(dt);
 };
 
 void GameMain::MouseDown(const IPoint& mousePos) {
-	SetWindowParams();
-	Save();
-	_button.MouseDown(mousePos);
+	_skeletonManager.MouseDown(mousePos);
 };
 
 void GameMain::MouseMove(const IPoint& mousePos) {
-	_button.MouseMove(mousePos);
+	_skeletonManager.MouseMove(mousePos);
 };
 
 void GameMain::MouseUp(const IPoint& mousePos) {
-	Load();
-	_button.MouseUp(mousePos);
+	_skeletonManager.MouseUp(mousePos);
 };
 
 void GameMain::KeyPress(unsigned char key) {

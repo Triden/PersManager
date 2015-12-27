@@ -16,10 +16,10 @@ namespace Core {
 	}
 
 	Screen::Screen() :
-		_fps(30),
+		_fps(60),
 		_width(640),
 		_height(480),
-		_glWidth(200),
+		_glWidth(266),
 		_glHeight(200),
 		_fixed(true),
 		_ONE_SECOND(DEFAULT_ONE_SECOND)

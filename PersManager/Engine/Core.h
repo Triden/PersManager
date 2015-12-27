@@ -7,5 +7,6 @@
 #include "Render.h"
 #include "Writer.h"
 #include "Button.h"
+#include "Panel.h"
 
 #endif

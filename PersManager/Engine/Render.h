@@ -2,10 +2,10 @@
 #define ENGINE_RENDER
 
 #include "Math.h"
+#include "Types.h"
 
 #include "..\..\Dependencies\glew\glew.h"
 #include "..\..\Dependencies\freeglut\freeglut.h"
-#include <vector>
 
 //Режимы отрисовки полигона
 enum PolygonMode {
@@ -18,7 +18,9 @@ namespace Core {
 	class Render {
 	private:
 		std::vector<PolygonMode> _polygonMode;
+		std::vector<Color> _color;
 		void SetPolyMode(PolygonMode pMode);
+		void SetColorMode(Color color);
 	public:
 		Render() {}
 		void DrawLine(IPoint pnt1, IPoint pnt2);	//Рисует линию
@@ -26,6 +28,8 @@ namespace Core {
 		void SetLineWidth(int width);	//Ширина линии
 		void SetPolygonMode(PolygonMode pMode);
 		void ResetPolygonMode();
+		void SetColor(Color color);
+		void ResetColor();
 	};
 	extern Render render;
 };

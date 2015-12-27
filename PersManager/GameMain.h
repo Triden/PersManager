@@ -1,14 +1,12 @@
 #ifndef GAMEFIELD
 #define GAMEFIELD
 
-
-#include "Engine/Core.h"
-#include "Engine/Math.h"
-#include "Engine/Widget.h"
+#include "Engine\Include.h"
+#include "SkeleteronManager\SkeletonManager.h"
 
 class GameMain : public Core::Widget {
 private:
-	Core::Button _button;
+	SkeletonManager _skeletonManager;
 public:
 	GameMain();
 	virtual ~GameMain();

@@ -18,6 +18,7 @@ namespace Core {
 		virtual void MouseMove(const IPoint& mousePos);
 		virtual void MouseUp(const IPoint& mousePos);
 		virtual void Create(const IRect& rect);
+		virtual void MoveTo(const IPoint& pos);
 	};
 };
 #endif
