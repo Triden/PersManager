@@ -1,13 +1,17 @@
 #include "Instruments.h"
 #include "Instruments.h"
 
+#define SKELETON_INSTRUMENTS_W 60
+#define SKELETON_INSTRUMENTS_H 120
+
 SkeletonInstrumentsPanel::SkeletonInstrumentsPanel() :
 	Core::Panel(
-		IRect(Core::screen.GLWidth() - B_WIDTH * BUTTONS_IN_THE_ROW,
-			Core::screen.GLHeight() - B_WIDTH,
-			60,
-			120), 5)
+		IRect(Core::screen.GLWidth() - SKELETON_INSTRUMENTS_W,
+			Core::screen.GLHeight() - SKELETON_INSTRUMENTS_H,
+			SKELETON_INSTRUMENTS_W,
+			SKELETON_INSTRUMENTS_H), 5)
 {
+	MoveTo(IPoint(GetRect().x, GetRect().y - GetCaptionRect().height));
 	//Init buttons
 	_makeBone.Create(IRect(0, 0, B_WIDTH, B_WIDTH));
 	_buttons.push_back(&_makeBone);

@@ -2,6 +2,8 @@
 #include "Render.h"
 
 namespace Core {
+	
+	const float Panel::CAPTION_H = 10.f;
 
 	Panel::Panel(IRect rect, float border) :
 		_mouseDown(false),
@@ -24,8 +26,14 @@ namespace Core {
 			_rect.height - _border * 2);
 	};
 
+	IRect Panel::GetCaptionRect() {
+		IRect rect = IRect(_rect.x, _rect.y + _rect.height, _rect.width, CAPTION_H);
+		return rect;
+	}
+
 	void Panel::MouseDown(const IPoint& mousePos) {
-		_mouseDown = _rect.Contain(mousePos);
+		
+		_mouseDown = GetCaptionRect().Contain(mousePos);
 		if (_mouseDown) {
 			_mousePress = mousePos;
 			_prevPos = IPoint(_rect.x, _rect.y);
@@ -50,8 +58,17 @@ namespace Core {
 		render.SetPolygonMode(POLY_LINE);
 		render.DrawRect(_rect);
 		render.ResetPolygonMode();
+
+		render.SetPolygonMode(POLY_FILL);
+		render.DrawRect(GetCaptionRect());
+		render.ResetPolygonMode();
 	};
 
 	void Panel::Update(float dt) {
 	};
+
+	void Panel::MoveTo(IPoint pnt) {
+		_rect.x = pnt.x;
+		_rect.y = pnt.y;
+	}
 };

@@ -6,6 +6,7 @@
 namespace Core {
 	class Panel {
 	private:
+		static const float CAPTION_H;
 		bool _mouseDown;
 		IPoint _prevPos;
 		IPoint _mousePress;
@@ -21,6 +22,8 @@ namespace Core {
 		virtual void Update(float dt);
 		IRect GetRect();
 		IRect GetBorderedRect();
+		void MoveTo(IPoint pnt);
+		IRect GetCaptionRect();
 	};
 };
 #endif
