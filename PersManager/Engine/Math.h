@@ -23,6 +23,20 @@ public:
 	FPoint operator +(const FPoint& point) {
 		return FPoint(x + point.x, y + point.y);
 	};
+	FPoint operator *(const float p) {
+		return FPoint(x * p, y * p);
+	};
+	FPoint operator /(const float p) {
+		return FPoint(x / p, y / p);
+	};
+	void operator *=(const float p) {
+		x *= p;
+		y *= p;
+	};
+	void operator /=(const float p) {
+		x /= p;
+		y /= p;
+	};
 
 	FPoint() : x(0.f), y(0.f) {}
 	FPoint(float x, float y) : x(x), y(y) {}
@@ -69,12 +83,9 @@ public:
 		return max;
 	}
 	void Scale(float scale) {
-		v1.x *= scale;
-		v1.y *= scale;
-		v2.x *= scale;
-		v2.y *= scale; 
-		v3.x *= scale;
-		v3.y *= scale;
+		v1 *= scale;
+		v2 *= scale;
+		v3 *= scale;
 	}
 };
 
