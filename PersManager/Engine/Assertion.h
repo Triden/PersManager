@@ -1,15 +1,12 @@
 #ifndef ENGINE_ASSERT
 #define ENGINE_ASSERT
 
-#include <assert.h>
+#include <crtdbg.h>
 
 inline void Assert(bool value) {
-	assert(value);
-};
-
-class Obj {
-public:
-	Obj() { ; };
+	if (!value) {
+		_CrtDbgBreak();
+	}
 };
 
 #endif

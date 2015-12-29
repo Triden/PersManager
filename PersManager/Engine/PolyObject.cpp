@@ -1,6 +1,5 @@
 #include "PolyObject.h"
 #include "Render.h"
-#include "Assertion.h"
 
 namespace Core {
 	PolyObject::PolyObject() :

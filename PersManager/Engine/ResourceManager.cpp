@@ -1,6 +1,6 @@
 #include "ResourceManager.h"
-#include "Assertion.h""
 #include "Writer.h"
+#include "Assertion.h"
 
 namespace Core {
 	ResourceManager::ResourceManager() {
@@ -8,6 +8,8 @@ namespace Core {
 	};
 
 	void ResourceManager::Load(const std::string& fileName) {
+		Clear();
+
 		XmlFile xmlFile(fileName);
 		xmlFile.Open();
 

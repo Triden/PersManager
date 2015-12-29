@@ -5,5 +5,6 @@
 #include "Math.h"
 #include "Types.h"
 #include <iostream>
+#include "Assertion.h"
 
 #endif // !ENGINE_INCLUDE
