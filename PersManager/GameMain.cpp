@@ -3,6 +3,7 @@
 GameMain::GameMain() 
 {
 	Core::render.SetPolygonMode(POLY_FILL);
+	Core::render.SetColor(Color::GREEN);
 	Core::render.SetLineWidth(1);
 	Core::screen.SetFixed(false);
 	

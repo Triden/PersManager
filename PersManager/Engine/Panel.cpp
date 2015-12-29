@@ -55,13 +55,23 @@ namespace Core {
 	};
 
 	void Panel::Draw() {
+		render.SetColor(Color::LIGHT_PINK);
+		render.SetPolygonMode(POLY_FILL);
+		render.DrawRect(_rect);
+		render.ResetPolygonMode();
+		render.ResetColor();
+
+		render.SetColor(Color::PINK);
 		render.SetPolygonMode(POLY_LINE);
 		render.DrawRect(_rect);
 		render.ResetPolygonMode();
+		render.ResetColor();
 
+		render.SetColor(Color::BLUE_VIOLET);
 		render.SetPolygonMode(POLY_FILL);
 		render.DrawRect(GetCaptionRect());
 		render.ResetPolygonMode();
+		render.ResetColor();
 	};
 
 	void Panel::Update(float dt) {

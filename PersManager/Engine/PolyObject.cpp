@@ -11,11 +11,9 @@ namespace Core {
 	};
 
 	void PolyObject::Draw(const FPoint& pos) {
-		render.SetPolygonMode(POLY_FILL);
 		for (int i = 0; i < (int)_polygons.size(); ++i) {
 			render.DrawPolygon(_polygons[i], pos);
 		}
-		render.ResetPolygonMode();
 	}
 
 	bool PolyObject::Default() {

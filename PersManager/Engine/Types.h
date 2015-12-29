@@ -24,6 +24,12 @@ public:
 	static const Color WHITE;
 	static const Color GREEN;
 	static const Color BLUE;
+	static const Color LIGHT_PINK;
+	static const Color PINK;
+	static const Color BLUE_VIOLET;
+	static const Color LIGHT_GRAY;
+	static const Color YELLOW;
+
 	float r;
 	float g;
 	float b;

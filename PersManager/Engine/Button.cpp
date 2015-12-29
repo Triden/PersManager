@@ -17,12 +17,20 @@ namespace Core {
 
 	void Button::Draw() {
 		if (_mouseDown && _mouseMove) {
-			render.SetPolygonMode(POLY_FILL);
+			render.SetColor(Color::LIGHT_GRAY);
 		} else {
-			render.SetPolygonMode(POLY_LINE);
+			render.SetColor(Color::YELLOW);
 		}
+		render.SetPolygonMode(POLY_FILL);
 		render.DrawRect(_rect);
 		render.ResetPolygonMode();
+		render.ResetColor();
+
+		render.SetColor(Color::PINK);
+		render.SetPolygonMode(POLY_LINE);
+		render.DrawRect(_rect);
+		render.ResetPolygonMode();
+		render.ResetColor();
 	}
 
 	void Button::Update(float dt) {

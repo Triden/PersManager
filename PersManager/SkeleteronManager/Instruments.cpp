@@ -50,9 +50,7 @@ void SkeletonInstrumentsPanel::Draw() {
 	}
 	Core::PolyObject *poly = Core::resourceManager.GetPoly("bone");
 	if (poly != NULL) {
-		Core::render.SetPolygonMode(POLY_FILL);
 		poly->Draw(FPoint(GetBorderedRect().x - poly->GetMin().x + 3, GetBorderedRect().y - poly->GetMin().y + 7));
-		Core::render.ResetPolygonMode();
 	} else {
 		Assert(false);
 	}

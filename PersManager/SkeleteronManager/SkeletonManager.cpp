@@ -8,10 +8,8 @@ SkeletonManager::~SkeletonManager() {
 }
 
 void SkeletonManager::Draw() {
-	Core::render.SetColor(Color::GREEN);
 	_instrumentsPanel.Draw();
 	_instrumentsPanel2.Draw();
-	Core::render.ResetColor();
 }
 
 void SkeletonManager::Update(float dt) {
