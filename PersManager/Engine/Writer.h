@@ -17,6 +17,7 @@ namespace Core {
 	class XmlNode {
 		xml_node<>* _node;
 		xml_document<>* _doc;
+		std::string GetValue(char* param);
 	public:
 		XmlNode(xml_node<>* node, xml_document<>* doc);
 		//Save
@@ -25,7 +26,9 @@ namespace Core {
 		void Apply();
 		void ApplyTo(XmlNode* node);
 		//Load
-		std::string GetValue(char* param);
+		int GetIntValueOrDef(char* param, int def = 0);
+		float GetFloatValueOrDef(char* param, float def = 0.f);
+		std::string GetStringValueOrDef(char* param, const std::string& def = "");
 	};
 
 	class XmlFile {

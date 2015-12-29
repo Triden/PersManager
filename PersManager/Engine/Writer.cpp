@@ -30,10 +30,33 @@ namespace Core {
 
 	std::string XmlNode::GetValue(char* param) {
 		if (_node->first_attribute(param) == NULL) {
-			Assert(false);
 			return "";
 		}
 		return _node->first_attribute(param)->value();
+	}
+
+	int XmlNode::GetIntValueOrDef(char* param, int def) {
+		std::string v = GetValue(param);
+		if (v.empty()) {
+			return def;
+		}
+		return String::ToInt(v);
+	}
+
+	float XmlNode::GetFloatValueOrDef(char* param, float def) {
+		std::string v = GetValue(param);
+		if (v.empty()) {
+			return def;
+		}
+		return String::ToFloat(v);
+	}
+
+	std::string XmlNode::GetStringValueOrDef(char* param, const std::string& def) {
+		std::string v = GetValue(param);
+		if (v.empty()) {
+			return def;
+		}
+		return v;
 	}
 
 	//========================XmlFile============================
@@ -163,15 +186,15 @@ namespace Core {
 		xmlFile.Open();
 
 		XmlNode *node = xmlFile.GetDeclaration();
-		std::string encoding = node->GetValue("encoding");
+		std::string encoding = node->GetStringValueOrDef("encoding", "");
 
 		XmlNode *rootXml = xmlFile.GetNode("root");
-		std::string root = rootXml->GetValue("type");
+		std::string root = rootXml->GetStringValueOrDef("type", "");
 		
 		XmlNode *childXml = xmlFile.GetNodeFrom(rootXml, "child");
 		int i = 0;
 		for (; childXml != NULL; childXml = xmlFile.GetNextNodeFrom(childXml, "child")) {
-			std::string test = childXml->GetValue("test");
+			std::string test = childXml->GetStringValueOrDef("test", "");
 			++i;
 		}
 	};

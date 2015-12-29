@@ -12,15 +12,15 @@ namespace Core {
 		xmlFile.Open();
 
 		XmlNode *node = xmlFile.GetDeclaration();
-		std::string encoding = node->GetValue("encoding");
+		std::string encoding = node->GetStringValueOrDef("encoding");
 
 		XmlNode *rootXml = xmlFile.GetNode("root");
 
 		//Грузим объекты из полигонов
 		XmlNode *polyXml = xmlFile.GetNodeFrom(rootXml, "poly");
 		for (; polyXml != NULL; polyXml = xmlFile.GetNextNodeFrom(polyXml, "poly")) {
-			std::string id = polyXml->GetValue("id");
-			float scale = String::ToFloat(polyXml->GetValue("scale"));
+			std::string id = polyXml->GetStringValueOrDef("id", "unknow");
+			float scale = polyXml->GetFloatValueOrDef("scale", 1.f);
 
 			XmlNode *triangleXml = xmlFile.GetNodeFrom(polyXml, "triangle");
 
@@ -29,12 +29,12 @@ namespace Core {
 
 			for (; triangleXml != NULL; triangleXml = xmlFile.GetNextNodeFrom(triangleXml, "triangle")) {
 				FPolygon polygon;
-				polygon.v1.x = String::ToFloat(triangleXml->GetValue("x1"));
-				polygon.v2.x = String::ToFloat(triangleXml->GetValue("x2"));
-				polygon.v3.x = String::ToFloat(triangleXml->GetValue("x3"));
-				polygon.v1.y = String::ToFloat(triangleXml->GetValue("y1"));
-				polygon.v2.y = String::ToFloat(triangleXml->GetValue("y2"));
-				polygon.v3.y = String::ToFloat(triangleXml->GetValue("y3"));
+				polygon.v1.x = triangleXml->GetFloatValueOrDef("x1", 0.f);
+				polygon.v2.x = triangleXml->GetFloatValueOrDef("x2", 0.f);
+				polygon.v3.x = triangleXml->GetFloatValueOrDef("x3", 0.f);
+				polygon.v1.y = triangleXml->GetFloatValueOrDef("y1", 0.f);
+				polygon.v2.y = triangleXml->GetFloatValueOrDef("y2", 0.f);
+				polygon.v3.y = triangleXml->GetFloatValueOrDef("y3", 0.f);
 				
 				polyObject.AddPolygon(polygon, false);
 			}
