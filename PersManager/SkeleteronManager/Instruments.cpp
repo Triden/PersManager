@@ -3,85 +3,69 @@
 
 #include "..\Engine\Assertion.h"
 
-#define SKELETON_INSTRUMENTS_W 60
-#define SKELETON_INSTRUMENTS_H 120
-
-SkeletonInstrumentsPanel::SkeletonInstrumentsPanel() :
-	Core::Panel(
-		IRect(Core::screen.GLWidth() - SKELETON_INSTRUMENTS_W,
-			Core::screen.GLHeight() - SKELETON_INSTRUMENTS_H,
-			SKELETON_INSTRUMENTS_W,
-			SKELETON_INSTRUMENTS_H), 5)
+SkeletonInstrumentsPanel::SkeletonInstrumentsPanel()
 {
-	MoveTo(IPoint(GetRect().x, GetRect().y - GetCaptionRect().height));
-	//Init buttons
-	_makeBone.Create(IRect(0, 0, B_WIDTH, B_WIDTH));
-	_buttons.push_back(&_makeBone);
-
-	MoveButtons();
+	_instruments.push_back(new MainInstruments());
+	_instruments.back()->Init();
+	_instruments.push_back(new MainInstruments());
+	_instruments.back()->Init();
+	_instruments.back()->SetActive();
 }
 
 SkeletonInstrumentsPanel::~SkeletonInstrumentsPanel() {
-
-}
-
-void SkeletonInstrumentsPanel::MoveButtons() {
-	float x = GetBorderedRect().x;
-	float y = GetBorderedRect().y;
-	for (int i = 0; i < (int)_buttons.size(); ++i) {
-		if (i % 2 == 0 && i != 0) {
-			x += B_WIDTH;
-		} else {
-			x = GetBorderedRect().x;
-		}
-
-		if (i % 2 == 0 && i != 0) {
-			y -= B_WIDTH;
-		}
-
-		_buttons[i]->MoveTo(IPoint(x, y));
+	std::vector<MainInstruments *>::iterator it;
+	for (it = _instruments.begin(); it != _instruments.end(); ) {
+		delete *it;
+		it = _instruments.erase(it);
 	}
 }
 
 void SkeletonInstrumentsPanel::Draw() {
-	Panel::Draw();
-	for (int i = 0; i < (int)_buttons.size(); ++i) {
-		_buttons[i]->Draw();
-	}
-	Core::PolyObject *poly = Core::resourceManager.GetPoly("bone");
-	if (poly != NULL) {
-		poly->Draw(FPoint(GetBorderedRect().x - poly->GetMin().x + 3, GetBorderedRect().y - poly->GetMin().y + 7));
-	} else {
-		Assert(false);
+	for (int i = 0; i < (int)_instruments.size(); ++i) {
+		_instruments[i]->Draw();
 	}
 }
 
 void SkeletonInstrumentsPanel::Update(float dt) {
-	Panel::Update(dt);
-	MoveButtons();
-	for (int i = 0; i < (int)_buttons.size(); ++i) {
-		_buttons[i]->Update(dt);
+	for (int i = 0; i < (int)_instruments.size(); ++i) {
+		_instruments[i]->Update(dt);
 	}
 }
 
 bool SkeletonInstrumentsPanel::MouseDown(const IPoint& pnt) {
-	bool res = Panel::MouseDown(pnt);
-	for (int i = 0; i < (int)_buttons.size(); ++i) {
-		_buttons[i]->MouseDown(pnt);
+	MainInstruments *mInstr = NULL;
+	for (int i = 0; i < (int)_instruments.size(); ++i) {
+		if (_instruments[i]->Active()) {
+			mInstr = _instruments[i];
+		}
 	}
-	return res;
+
+	if (mInstr != NULL && mInstr->MouseDown(pnt)) {
+		return true;
+	}
+
+	for (int i = (int)_instruments.size() - 1; i >= 0 ; --i) {	//Проверяем в обратном порядке, потому что рисуются они в обычном
+		if (_instruments[i]->MouseDown(pnt)) {
+			for (int j = 0; j < (int)_instruments.size(); ++j) {
+				if (_instruments[j] != _instruments[i]) {
+					_instruments[j]->ResetActive();
+				}
+			}
+
+			return true;
+		}
+	}
+	return false;
 }
 
 void SkeletonInstrumentsPanel::MouseMove(const IPoint& pnt) {
-	Panel::MouseMove(pnt);
-	for (int i = 0; i < (int)_buttons.size(); ++i) {
-		_buttons[i]->MouseMove(pnt);
+	for (int i = 0; i < (int)_instruments.size(); ++i) {
+		_instruments[i]->MouseMove(pnt);
 	}
 }
 
 void SkeletonInstrumentsPanel::MouseUp(const IPoint& pnt) {
-	Panel::MouseUp(pnt);
-	for (int i = 0; i < (int)_buttons.size(); ++i) {
-		_buttons[i]->MouseUp(pnt);
+	for (int i = 0; i < (int)_instruments.size(); ++i) {
+		_instruments[i]->MouseUp(pnt);
 	}
 }

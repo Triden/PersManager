@@ -29,6 +29,7 @@ public:
 	static const Color BLUE_VIOLET;
 	static const Color LIGHT_GRAY;
 	static const Color YELLOW;
+	static const Color LIGHT_RED;
 
 	float r;
 	float g;

@@ -11,7 +11,8 @@ namespace Core {
 		IPoint _prevPos;
 		IPoint _mousePress;
 		IRect _rect;
-		float _border;
+		float _border;	//Внутрення граница относительно которой должны выравниваться объекты
+		bool _active;	//Активна ли данная панель
 	public:
 		Panel(IRect rect, float border);
 		virtual bool MouseDown(const IPoint& mousePos);
@@ -24,6 +25,9 @@ namespace Core {
 		IRect GetBorderedRect();
 		void MoveTo(IPoint pnt);
 		IRect GetCaptionRect();
+		void ResetActive();
+		void SetActive() { _active = true; }
+		bool Active() { return _active; }
 	};
 };
 #endif

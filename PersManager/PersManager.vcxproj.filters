@@ -78,6 +78,9 @@
     <ClCompile Include="Engine\ResourceManager.cpp">
       <Filter>Файлы исходного кода\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="SkeleteronManager\MainInstruments.cpp">
+      <Filter>Файлы исходного кода\SkeletonManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rapidxml\rapidxml.hpp">
@@ -142,6 +145,9 @@
     </ClInclude>
     <ClInclude Include="Engine\ResourceManager.h">
       <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeleteronManager\MainInstruments.h">
+      <Filter>Заголовочные файлы\SkeletonManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

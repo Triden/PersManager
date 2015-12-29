@@ -34,6 +34,7 @@
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SkeleteronManager\Instruments.cpp" />
+    <ClCompile Include="SkeleteronManager\MainInstruments.cpp" />
     <ClCompile Include="SkeleteronManager\SkeletonManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +58,7 @@
     <ClInclude Include="rapidxml\rapidxml_print.hpp" />
     <ClInclude Include="rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="SkeleteronManager\Instruments.h" />
+    <ClInclude Include="SkeleteronManager\MainInstruments.h" />
     <ClInclude Include="SkeleteronManager\SkeletonManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

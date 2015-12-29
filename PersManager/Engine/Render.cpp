@@ -76,10 +76,14 @@ namespace Core {
 	}
 
 	void Render::DrawPolygon(const FPolygon& poly, const FPoint& pos) {
+		DrawPolygon(poly, pos.x, pos.y);
+	}
+
+	void Render::DrawPolygon(const FPolygon& poly, float x, float y) {
 		glBegin(GL_POLYGON);//begin drawing of polygon
-		glVertex3f(poly.v1.x + pos.x, poly.v1.y + pos.y, 0.0f);
-		glVertex3f(poly.v2.x + pos.x, poly.v2.y + pos.y, 0.0f);
-		glVertex3f(poly.v3.x + pos.x, poly.v3.y + pos.y, 0.0f);
+		glVertex3f(poly.v1.x + x, poly.v1.y + y, 0.0f);
+		glVertex3f(poly.v2.x + x, poly.v2.y + y, 0.0f);
+		glVertex3f(poly.v3.x + x, poly.v3.y + y, 0.0f);
 		glEnd();//end drawing of polygon
 	}
 };

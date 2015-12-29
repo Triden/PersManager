@@ -2,14 +2,11 @@
 #define SKELETON_INSTRUMENTS
 
 #include "..\Engine\Include.h"
+#include "MainInstruments.h"
 
-class SkeletonInstrumentsPanel : public Core::Panel {
+class SkeletonInstrumentsPanel {
 private:
-	const int BUTTONS_IN_THE_ROW = 2;
-	const int B_WIDTH = 20;
-
-	Core::Button _makeBone;
-	std::vector<Core::Button *> _buttons;
+	std::vector<MainInstruments *> _instruments;
 public:
 	SkeletonInstrumentsPanel();
 	~SkeletonInstrumentsPanel();
@@ -18,7 +15,6 @@ public:
 	virtual bool MouseDown(const IPoint& pnt);
 	virtual void MouseMove(const IPoint& pnt);
 	virtual void MouseUp(const IPoint& pnt);
-	virtual void MoveButtons();
 };
 
 #endif

@@ -9,7 +9,8 @@ namespace Core {
 		_mouseDown(false),
 		_mousePress(-1, -1),
 		_rect(rect),
-		_border(border)
+		_border(border),
+		_active(false)
 	{
 
 	};
@@ -37,6 +38,7 @@ namespace Core {
 			_mousePress = mousePos;
 			_prevPos = IPoint(_rect.x, _rect.y);
 		}
+		_active = true;
 		return _mouseDown || _rect.Contain(mousePos);
 	};
 
@@ -67,7 +69,11 @@ namespace Core {
 		render.ResetPolygonMode();
 		render.ResetColor();
 
-		render.SetColor(Color::BLUE_VIOLET);
+		if (_active) {
+			render.SetColor(Color::RED);
+		} else {
+			render.SetColor(Color::BLUE_VIOLET);
+		}
 		render.SetPolygonMode(POLY_FILL);
 		render.DrawRect(GetCaptionRect());
 		render.ResetPolygonMode();
@@ -80,5 +86,9 @@ namespace Core {
 	void Panel::MoveTo(IPoint pnt) {
 		_rect.x = pnt.x;
 		_rect.y = pnt.y;
+	}
+
+	void Panel::ResetActive() {
+		_active = false;
 	}
 };

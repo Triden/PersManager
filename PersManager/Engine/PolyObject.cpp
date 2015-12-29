@@ -10,9 +10,14 @@ namespace Core {
 		_polygons.clear();
 	};
 
-	void PolyObject::Draw(const FPoint& pos) {
+	void PolyObject::Draw(FPoint pos) {
+		Draw(pos.x, pos.y);
+	}
+
+
+	void PolyObject::Draw(float x, float y) {
 		for (int i = 0; i < (int)_polygons.size(); ++i) {
-			render.DrawPolygon(_polygons[i], pos);
+			render.DrawPolygon(_polygons[i], x - GetMin().x, y - GetMin().y);
 		}
 	}
 

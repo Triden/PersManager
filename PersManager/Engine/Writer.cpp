@@ -172,7 +172,7 @@ namespace Core {
 		std::vector<char *> test = {
 			"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
 		};
-		for (int i = 0; i < test.size(); ++i) {
+		for (int i = 0; i < (int)test.size(); ++i) {
 			XmlNode* child = xmlFile.AddNode("child");
 			child->AddParameter("test", test[i]);
 			child->ApplyTo(root);

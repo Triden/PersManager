@@ -13,7 +13,8 @@ namespace Core {
 		FPoint _max;
 	public:
 		PolyObject();
-		void Draw(const FPoint& pos);
+		void Draw(FPoint pos);
+		void Draw(float x, float y);
 		const std::string& GetId() const { return _id; }
 		bool Default();
 		void AddPolygon(const FPolygon& polygon, bool recalcMaxAndMin = true);
