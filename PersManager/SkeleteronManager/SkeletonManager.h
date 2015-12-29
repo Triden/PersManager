@@ -7,6 +7,7 @@
 class SkeletonManager {
 private:
 	SkeletonInstrumentsPanel _instrumentsPanel;	//Панель инстурментов
+	SkeletonInstrumentsPanel _instrumentsPanel2;	//Панель инстурментов
 public:
 	SkeletonManager();
 	~SkeletonManager();
