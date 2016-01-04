@@ -14,6 +14,7 @@ namespace Core {
 		virtual void MouseMove(const IPoint& mousePos) = 0;
 		virtual void MouseUp(const IPoint& mousePos) = 0;
 		virtual void KeyPress(unsigned char key) = 0;
+		virtual void MouseWheel(int dir, const IPoint& mousePos) = 0;
 	};
 }
 #endif

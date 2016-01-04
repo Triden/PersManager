@@ -8,6 +8,14 @@ class IPoint {
 public:
 	int x;
 	int y;
+
+	IPoint operator +(const IPoint& point) {
+		return IPoint(x + point.x, y + point.y);
+	};
+	IPoint operator -(const IPoint& point) {
+		return IPoint(x - point.x, y - point.y);
+	};
+
 	IPoint() : x(0), y(0) {}
 	IPoint(int x, int y) : x(x), y(y) {}
 };
@@ -17,27 +25,38 @@ public:
 	float x;
 	float y;
 	
-	FPoint operator -(const FPoint& point) {
+	FPoint operator -(const FPoint& point) const {
 		return FPoint(x - point.x, y - point.y);
 	};
-	FPoint operator +(const FPoint& point) {
+	FPoint operator +(const FPoint& point) const {
 		return FPoint(x + point.x, y + point.y);
 	};
-	FPoint operator *(const float p) {
+	FPoint operator *(const float& p) const {
 		return FPoint(x * p, y * p);
 	};
-	FPoint operator /(const float p) {
+	FPoint operator /(const float& p) const {
 		return FPoint(x / p, y / p);
 	};
-	void operator *=(const float p) {
+	void operator *=(const float& p) {
 		x *= p;
 		y *= p;
 	};
-	void operator /=(const float p) {
+	void operator /=(const float& p) {
 		x /= p;
 		y /= p;
 	};
-
+	FPoint operator-() const {
+		return FPoint(-x, -y);
+	}
+	void operator +=(const FPoint& p) {
+		x += p.x;
+		y += p.y;
+	}
+	void operator -=(const FPoint& p) {
+		x -= p.x;
+		y -= p.y;
+	}
+	FPoint(const IPoint& point) : x(point.x), y(point.y) {}
 	FPoint() : x(0.f), y(0.f) {}
 	FPoint(float x, float y) : x(x), y(y) {}
 };

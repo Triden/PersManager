@@ -32,6 +32,13 @@ namespace Core {
 		void ResetPolygonMode();
 		void SetColor(Color color);
 		void ResetColor();
+
+		void PushMatrix();
+		void PopMatrix();
+		void MatrixScale(float scale);
+		void MatrixScale(FPoint scale);
+		void MatrixScale(float scaleX, float scaleY, float scaleZ = 1.f);
+		void MatrixMove(FPoint pnt);
 	};
 	extern Render render;
 };

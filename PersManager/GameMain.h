@@ -16,7 +16,7 @@ public:
 	virtual void MouseMove(const IPoint& mousePos);
 	virtual void MouseUp(const IPoint& mousePos);
 	virtual void KeyPress(unsigned char key);
-
+	virtual void MouseWheel(int dir, const IPoint& mousePos);
 	void SetWindowParams();
 };
 

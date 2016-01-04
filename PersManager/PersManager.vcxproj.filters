@@ -81,6 +81,12 @@
     <ClCompile Include="SkeleteronManager\MainInstruments.cpp">
       <Filter>Файлы исходного кода\SkeletonManager</Filter>
     </ClCompile>
+    <ClCompile Include="SkeleteronManager\Grid.cpp">
+      <Filter>Файлы исходного кода\SkeletonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeleteronManager\ScaleManager.cpp">
+      <Filter>Файлы исходного кода\SkeletonManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rapidxml\rapidxml.hpp">
@@ -147,6 +153,12 @@
       <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
     <ClInclude Include="SkeleteronManager\MainInstruments.h">
+      <Filter>Заголовочные файлы\SkeletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeleteronManager\Grid.h">
+      <Filter>Заголовочные файлы\SkeletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeleteronManager\ScaleManager.h">
       <Filter>Заголовочные файлы\SkeletonManager</Filter>
     </ClInclude>
   </ItemGroup>

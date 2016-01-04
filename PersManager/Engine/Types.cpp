@@ -10,3 +10,4 @@ const Color Color::BLUE_VIOLET = Color(0.62352f, 0.372549f, 0.623529f);
 const Color Color::LIGHT_GRAY = Color(0.92f, 0.93f, 0.925f);
 const Color Color::YELLOW = Color(0xFD / 255.f, 0xFD / 255.f, 0x99 / 255.f);
 const Color Color::LIGHT_RED = Color(0xFF / 255.f, 0x96 / 255.f, 0x96 / 255.f);
+const Color Color::DARK_RED = Color(94.f / 255.f, 4.f / 255.f, 14.f / 255.f);

@@ -28,6 +28,8 @@ namespace Core {
 		void KeyPressGL(unsigned char key, int x, int y);
 		void MouseMoveGL(int x, int y);
 		void MouseMove(const IPoint& mousePos);
+		void MouseWheelGL(int button, int dir, int x, int y);
+		void MouseWheel(int dir, const IPoint& mousePos);
 		void MouseGL(int button, int state, int x, int y);
 		void MouseDown(const IPoint& mousePos);
 		void MouseUp(const IPoint& mousePos);

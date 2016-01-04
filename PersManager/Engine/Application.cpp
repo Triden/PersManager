@@ -61,6 +61,20 @@ namespace Core {
 		MouseMove(IPoint(xx, yy));
 	}
 
+	void Application::MouseWheelGL(int button, int dir, int x, int y) {
+		float xx = (x * 1.f) / screen.Width() * screen.GLWidth();
+		float yy = screen.GLHeight() - (y * 1.f) / screen.Height() * screen.GLHeight();
+		if (dir != 0) {
+			MouseWheel(dir, IPoint(xx, yy));
+		}
+	}
+
+	void Application::MouseWheel(int dir, const IPoint& mousePos) {
+		for (int i = 0; i < int(_widgets.size()); ++i) {
+			_widgets[i]->MouseWheel(dir, mousePos);
+		}
+	}
+
 	void Application::MouseGL(int button, int state, int x, int y) {
 		IPoint mousePos(
 			(x * 1.f) / screen.Width() * screen.GLWidth(),
@@ -80,7 +94,7 @@ namespace Core {
 
 	void Application::Draw() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glClearColor(0.0, 0.3, 0.3, 1.0);
+		glClearColor(0.0, 0.0, 0.0, 1.0);
 
 		for (int i = 0; i < int(_widgets.size()); ++i) {
 			_widgets[i]->Draw();

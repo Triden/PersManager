@@ -6,6 +6,10 @@ void UpdateGL(int value) {
 	glutTimerFunc(Core::screen.UpdateRate(), UpdateGL, value); // Вызываем следующий таймер
 }
 
+void MouseWheel(int button, int dir, int x, int y) {
+	Core::application.MouseWheelGL(button, dir, x, y);
+}
+
 void MouseGL(int button, int state, int x, int y) {
 	Core::application.MouseGL(button, state, x, y);
 }
@@ -42,6 +46,7 @@ int main(int argc, char **argv)
 	glutKeyboardFunc(KeyPressGL);
 	glutMouseFunc(MouseGL);
 	glutPassiveMotionFunc(MouseMoveGL);
+	glutMouseWheelFunc(MouseWheel);
 	glutMotionFunc(MouseMoveGL);
 	glutReshapeFunc(OnReshape);
 	glutTimerFunc(Core::screen.UpdateRate(), UpdateGL, 0);	//UpdateGL callback

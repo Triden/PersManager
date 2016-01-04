@@ -5,8 +5,7 @@ GameMain::GameMain()
 	Core::render.SetPolygonMode(POLY_FILL);
 	Core::render.SetColor(Color::GREEN);
 	Core::render.SetLineWidth(1);
-	Core::screen.SetFixed(false);
-	
+	Core::screen.SetFixed(false);	
 }
 
 GameMain::~GameMain() {
@@ -37,4 +36,8 @@ void GameMain::KeyPress(unsigned char key) {
 
 void GameMain::SetWindowParams() {
 
+}
+
+void GameMain::MouseWheel(int dir, const IPoint& mousePos) {
+	_skeletonManager.MouseWheel(dir, mousePos);
 }

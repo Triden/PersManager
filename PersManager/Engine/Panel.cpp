@@ -38,7 +38,6 @@ namespace Core {
 			_mousePress = mousePos;
 			_prevPos = IPoint(_rect.x, _rect.y);
 		}
-		_active = true;
 		return _mouseDown || _rect.Contain(mousePos);
 	};
 

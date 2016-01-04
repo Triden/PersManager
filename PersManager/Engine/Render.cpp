@@ -59,7 +59,6 @@ namespace Core {
 	}
 
 	void Render::DrawLine(IPoint pnt1, IPoint pnt2) {
-		glColor3f(1.0, 0.0, 0.0);
 		glBegin(GL_LINES);
 		glVertex3f(pnt1.x, pnt1.y, 0);
 		glVertex3f(pnt2.x, pnt2.y, 0);
@@ -85,5 +84,28 @@ namespace Core {
 		glVertex3f(poly.v2.x + x, poly.v2.y + y, 0.0f);
 		glVertex3f(poly.v3.x + x, poly.v3.y + y, 0.0f);
 		glEnd();//end drawing of polygon
+	}
+
+	void Render::PushMatrix() {
+		glPushMatrix();
+	}
+	void Render::PopMatrix() {
+		glPopMatrix();
+	}
+
+	void Render::MatrixMove(FPoint pnt) {
+		glTranslatef(pnt.x, pnt.y, 0.f);
+	}
+
+	void Render::MatrixScale(float scale) {
+		MatrixScale(scale, scale, 1.f);
+	}
+
+	void Render::MatrixScale(FPoint scale) {
+		MatrixScale(scale.x, scale.y);
+	}
+
+	void Render::MatrixScale(float scaleX, float scaleY, float scaleZ) {
+		glScalef(scaleX, scaleY, scaleZ);
 	}
 };
