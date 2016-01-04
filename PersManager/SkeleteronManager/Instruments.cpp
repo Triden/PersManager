@@ -33,25 +33,15 @@ void SkeletonInstrumentsPanel::Update(float dt) {
 }
 
 bool SkeletonInstrumentsPanel::MouseDown(const IPoint& pnt) {
-	MainInstruments *mInstr = NULL;
-	for (int i = 0; i < (int)_instruments.size(); ++i) {
-		if (_instruments[i]->Active()) {
-			mInstr = _instruments[i];
-		}
-	}
-
-	if (mInstr != NULL && mInstr->MouseDown(pnt)) {
-		return true;
-	}
-
 	for (int i = (int)_instruments.size() - 1; i >= 0 ; --i) {	//ѕровер€ем в обратном пор€дке, потому что рисуютс€ они в обычном
 		if (_instruments[i]->MouseDown(pnt)) {
+			//–есетим все панели
 			for (int j = 0; j < (int)_instruments.size(); ++j) {
-				if (_instruments[j] != _instruments[i]) {
-					_instruments[j]->ResetActive();
-				}
+				_instruments[j]->ResetActive();
 			}
-
+			//ћен€ем местами панели дл€ отрисовки
+			std::swap(_instruments[i], _instruments[(int)_instruments.size() - 1]);
+			_instruments[(int)_instruments.size() - 1]->SetActive();
 			return true;
 		}
 	}
