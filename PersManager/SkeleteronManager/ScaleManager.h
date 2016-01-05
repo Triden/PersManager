@@ -8,7 +8,6 @@ private:
 	float _scale;
 	float _speed;	//Скорость с которой изменяется масштаб
 	FPoint _basePos;
-	FPoint _prevStartPos;
 	std::vector<FPoint> _points;
 	bool _pressed;
 	IPoint _mouseDown;

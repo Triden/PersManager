@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <vector>
 
+class FPoint;
+
 class IPoint {
 public:
 	int x;
@@ -15,8 +17,12 @@ public:
 	IPoint operator -(const IPoint& point) {
 		return IPoint(x - point.x, y - point.y);
 	};
+	IPoint operator-() const {
+		return IPoint(-x, -y);
+	}
 
 	IPoint() : x(0), y(0) {}
+	IPoint(const FPoint& point);
 	IPoint(int x, int y) : x(x), y(y) {}
 };
 

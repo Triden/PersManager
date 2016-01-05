@@ -5,7 +5,6 @@ ScaleManager::ScaleManager(float initScale, float speed) :
 	_speed(speed),
 	_basePos(0.f, 0.f),
 	_pressed(false),
-	_prevStartPos(),
 	_mouseDown()
 {
 }
@@ -61,13 +60,12 @@ void ScaleManager::MouseDown(const IPoint& pnt) {
 
 	_pressed = true;
 	_mouseDown = pnt;
-	_prevStartPos = _basePos;
 }
 
 void ScaleManager::MouseMove(const IPoint& pnt) {
 	if (_pressed) {
-		_basePos.x = _prevStartPos.x + (pnt.x - _mouseDown.x);
-		_basePos.y = _prevStartPos.y + (pnt.y - _mouseDown.y);
+		_basePos = _basePos + pnt - _mouseDown;
+		_mouseDown = pnt;
 	}
 }
 
