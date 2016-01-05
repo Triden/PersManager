@@ -2,39 +2,6 @@
 
 namespace Core {
 
-	MouseHandler::MouseHandler() :
-		mouseMove(false)
-	{
-		POINT cp;
-		GetCursorPos(&cp);
-		mousePos = FPoint(cp.x, cp.y);
-	}
-
-	MouseHandler::~MouseHandler() {
-	}
-
-	void MouseHandler::Update() {
-		FPoint oldMousePos = mousePos;
-		POINT cp;
-		GetCursorPos(&cp);
-		mousePos = FPoint(cp.x, cp.y);
-		if (oldMousePos.x != mousePos.x ||
-			oldMousePos.y != mousePos.y) 
-		{
-			mouseMove = true;
-		} else {
-			mouseMove = false;
-		}
-	}
-
-	bool MouseHandler::MouseMove() {
-		return mouseMove;
-	}
-
-	FPoint MouseHandler::GetMousePos() {
-		return mousePos;
-	}
-
 	Application::Application() {
 
 	}
@@ -49,14 +16,8 @@ namespace Core {
 		static int lastTime = 0;
 		int dt = cTime - lastTime;	//Реальное время, которой прошло с момента последнего апдейта
 		lastTime = cTime;
-		
-		if (_mouseHandler.MouseMove()) {
-			MouseMoveGL(_mouseHandler.GetMousePos().x, _mouseHandler.GetMousePos().y);
-		}
-		_mouseHandler.Update();
 		Update((dt * 1.f) / screen.OneSecond());
 		Draw();
-		
 	};
 
 	void Application::InitOpenGlContex(int argc, char **argv) {
