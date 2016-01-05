@@ -9,9 +9,22 @@
 #include "..\..\Dependencies\freeglut\freeglut.h"
 
 namespace Core {
+	class MouseHandler {
+	private:
+		bool  mouseMove;
+		FPoint mousePos;
+	public:
+		MouseHandler();
+		~MouseHandler();
+		void Update();
+		bool MouseMove();
+		FPoint GetMousePos();
+	};
+
 	class Application {
 	private:
 		std::vector<Widget *> _widgets;
+		MouseHandler _mouseHandler;
 	public:
 		Application();
 		void UpdateGL(int value);
