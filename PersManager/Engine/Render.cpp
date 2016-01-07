@@ -65,6 +65,19 @@ namespace Core {
 		glEnd();
 	};
 
+	void Render::DrawCircle(const IPoint& pnt, float r, int accuracy) {
+		glBegin(GL_LINES);
+		for (int i = 0; i < accuracy; ++i) {
+			FPoint pnt1(r * sinf(2.f * M_PI * (i * 1.f / accuracy)), r * cosf(2.f * M_PI * (i * 1.f / accuracy)));
+			FPoint pnt2(r * sinf(2.f * M_PI * ((i + 1) * 1.f / accuracy)), r * cosf(2.f * M_PI * ((i + 1) * 1.f / accuracy)));
+			pnt1 += pnt;
+			pnt2 += pnt;
+			glVertex3f(pnt1.x, pnt1.y, 0);
+			glVertex3f(pnt2.x, pnt2.y, 0);
+		}
+		glEnd();
+	};
+
 	void Render::DrawRect(const IRect& rect) {
 		glBegin(GL_QUADS);
 		glVertex3f(rect.x, rect.y + rect.height, 0.0f);	// Top Left
