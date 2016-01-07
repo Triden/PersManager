@@ -1,45 +1,56 @@
 #include "SkeletonManager.h"
 
+SkeletonManager* SkeletonManager::_instance = NULL;
+
+SkeletonManager* SkeletonManager::Instance() {
+	return _instance;
+}
+
 SkeletonManager::SkeletonManager() :
-	_grid(20),
 	_scaleManager(1.f, 0.1f)
 {
+	Assert(_instance == NULL);
+	_instance = this;
 }
 
 SkeletonManager::~SkeletonManager() {
+	_instance = NULL;
+}
 
+ScaleManager* SkeletonManager::GetScaleManager() {
+	return &_scaleManager;
 }
 
 void SkeletonManager::Draw() {
-	Core::render.PushMatrix();
-	FPoint move = _scaleManager.GetMove();
-	Core::render.MatrixMove(move);
-	Core::render.MatrixScale(_scaleManager.GetScale());
-	_grid.Draw(_scaleManager.GetScaledRect());
-	Core::render.PopMatrix();
-
+	//Поле
+	_field.Draw();
+	//Инструменты
 	_scaleManager.Draw();
 	_instrumentsPanel.Draw();
 }
 
 void SkeletonManager::Update(float dt) {
-	_grid.Update(dt);
+	_field.Update(dt);
 	_instrumentsPanel.Update(dt);
 }
 
 void SkeletonManager::MouseDown(const IPoint& pnt) {
 	if (!_instrumentsPanel.MouseDown(pnt)) {
-		_scaleManager.MouseDown(pnt);
+		if (!_field.MouseDown(pnt)) {
+			_scaleManager.MouseDown(pnt);
+		}
 	}
 }
 
 void SkeletonManager::MouseMove(const IPoint& pnt) {
 	_instrumentsPanel.MouseMove(pnt);
+	_field.MouseMove(pnt);
 	_scaleManager.MouseMove(pnt);
 }
 
 void SkeletonManager::MouseUp(const IPoint& pnt) {
 	_instrumentsPanel.MouseUp(pnt);
+	_field.MouseUp(pnt);
 	_scaleManager.MouseUp(pnt);
 }
 

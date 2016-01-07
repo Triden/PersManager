@@ -13,6 +13,7 @@ namespace Core {
 		int _fps;
 		bool _fixed;
 		float _ONE_SECOND;
+		FPoint _mousePos;
 	public:
 		Screen();
 		Screen(int fps, int screenWidth, int screenHeight, int glWidth, int glHeight);
@@ -30,6 +31,10 @@ namespace Core {
 		void SetOneSecond(float oneSecond);
 		int UpdateRate();
 		void OnResize(int width, int height);	//Изменение размера окна
+		void MouseDown(const IPoint& mousePos);
+		void MouseMove(const IPoint& mousePos);
+		void MouseUp(const IPoint& mousePos);
+		FPoint GetMousePos() { return _mousePos; }
 	};
 	extern Screen screen;
 };

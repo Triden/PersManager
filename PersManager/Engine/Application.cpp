@@ -126,18 +126,22 @@ namespace Core {
 	}
 
 	void Application::MouseMove(const IPoint& mousePos) {
+		screen.MouseMove(mousePos);
 		for (int i = 0; i < int(_widgets.size()); ++i) {
 			_widgets[i]->MouseMove(mousePos);
 		}
+		
 	}
 
 	void Application::MouseDown(const IPoint& mousePos) {
+		screen.MouseDown(mousePos);
 		for (int i = 0; i < int(_widgets.size()); ++i) {
 			_widgets[i]->MouseDown(mousePos);
 		}
 	}
 
 	void Application::MouseUp(const IPoint& mousePos) {
+		screen.MouseUp(mousePos);
 		for (int i = 0; i < int(_widgets.size()); ++i) {
 			_widgets[i]->MouseUp(mousePos);
 		}

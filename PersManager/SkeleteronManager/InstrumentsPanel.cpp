@@ -1,17 +1,25 @@
-#include "MainInstruments.h"
+#include "InstrumentsPanel.h"
+#include "SkeletonInstruments.h"
 
 #define SKELETON_INSTRUMENTS_W 60
 #define SKELETON_INSTRUMENTS_H 120
 
-const int MainInstruments::BUTTONS_IN_THE_ROW = 2;
-const int MainInstruments::B_WIDTH = 20;
+const int InstrumentsPanel::BUTTONS_IN_THE_ROW = 2;
+const int InstrumentsPanel::B_WIDTH = 20;
 
-MainInstruments::MainInstruments() :
+InstrumentsButton::InstrumentsButton(SkeletonState state) :
+	ActiveButton(),
+	_state(state)
+{
+}
+
+InstrumentsPanel::InstrumentsPanel() :
 	Core::Panel(
 		IRect(Core::screen.GLWidth() - SKELETON_INSTRUMENTS_W,
 			Core::screen.GLHeight() - SKELETON_INSTRUMENTS_H,
 			SKELETON_INSTRUMENTS_W,
-			SKELETON_INSTRUMENTS_H), 5)
+			SKELETON_INSTRUMENTS_H), 5),
+	_makeBone(BONE_TO_ADD_POINT_1)
 {
 	MoveTo(IPoint(GetRect().x, GetRect().y - GetCaptionRect().height));
 
@@ -20,25 +28,24 @@ MainInstruments::MainInstruments() :
 	_makeBone.SetIcon(Core::resourceManager.GetPoly("bone"));
 }
 
-void MainInstruments::Init() {
+void InstrumentsPanel::Init() {
 	_buttons.clear();
 	_buttons.push_back(&_makeBone);
 
 	MoveButtons();
 }
 
-MainInstruments::~MainInstruments() {
+InstrumentsPanel::~InstrumentsPanel() {
 }
 
-void MainInstruments::MoveButtons() {
+void InstrumentsPanel::MoveButtons() {
 	float x = GetBorderedRect().x;
 	float y = GetBorderedRect().y;
 	int bSize = _buttons.size();
 	for (int i = 0; i < bSize; ++i) {
 		if (i % 2 == 0 && i != 0) {
 			x += B_WIDTH;
-		}
-		else {
+		} else {
 			x = GetBorderedRect().x;
 		}
 
@@ -50,14 +57,14 @@ void MainInstruments::MoveButtons() {
 	}
 }
 
-void MainInstruments::Draw() {
+void InstrumentsPanel::Draw() {
 	Panel::Draw();
 	for (int i = 0; i < (int)_buttons.size(); ++i) {
 		_buttons[i]->Draw();
 	}
 }
 
-void MainInstruments::Update(float dt) {
+void InstrumentsPanel::Update(float dt) {
 	Panel::Update(dt);
 	MoveButtons();
 	for (int i = 0; i < (int)_buttons.size(); ++i) {
@@ -65,15 +72,18 @@ void MainInstruments::Update(float dt) {
 	}
 }
 
-bool MainInstruments::MouseDown(const IPoint& pnt) {
+bool InstrumentsPanel::MouseDown(const IPoint& pnt) {
 	bool res = Panel::MouseDown(pnt);
 	for (int i = 0; i < (int)_buttons.size(); ++i) {
-		_buttons[i]->MouseDown(pnt);
+		if (_buttons[i]->MouseDown(pnt)) {
+			SkeletonInstruments::Instance()->SetState(_buttons[i]->GetState());
+			return res;
+		}
 	}
 	return res;
 }
 
-void MainInstruments::MouseMove(const IPoint& pnt) {
+void InstrumentsPanel::MouseMove(const IPoint& pnt) {
 	Panel::MouseMove(pnt);
 	int bSize = _buttons.size();
 	for (int i = 0; i < bSize; ++i) {
@@ -83,9 +93,15 @@ void MainInstruments::MouseMove(const IPoint& pnt) {
 	}
 }
 
-void MainInstruments::MouseUp(const IPoint& pnt) {
+void InstrumentsPanel::MouseUp(const IPoint& pnt) {
 	Panel::MouseUp(pnt);
 	for (int i = 0; i < (int)_buttons.size(); ++i) {
 		_buttons[i]->MouseUp(pnt);
+	}
+}
+
+void InstrumentsPanel::ResetButtons() {
+	for (int i = 0; i < (int)_buttons.size(); ++i) {
+		_buttons[i]->SetChecked(false);
 	}
 }

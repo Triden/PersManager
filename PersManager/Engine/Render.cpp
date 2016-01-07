@@ -78,6 +78,14 @@ namespace Core {
 		glEnd();
 	};
 
+	void Render::DrawBone(Bone* bone) {
+		if (bone != NULL) {
+			FPoint pnt1 = bone->p;
+			FPoint pnt2(bone->l * cosf(bone->a), bone->l * sinf(bone->a));
+			DrawLine(pnt1, pnt2 + pnt1);
+		}
+	}
+
 	void Render::DrawRect(const IRect& rect) {
 		glBegin(GL_QUADS);
 		glVertex3f(rect.x, rect.y + rect.height, 0.0f);	// Top Left

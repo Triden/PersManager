@@ -11,3 +11,19 @@ const Color Color::LIGHT_GRAY = Color(0.92f, 0.93f, 0.925f);
 const Color Color::YELLOW = Color(0xFD / 255.f, 0xFD / 255.f, 0x99 / 255.f);
 const Color Color::LIGHT_RED = Color(0xFF / 255.f, 0x96 / 255.f, 0x96 / 255.f);
 const Color Color::DARK_RED = Color(94.f / 255.f, 4.f / 255.f, 14.f / 255.f);
+
+Bone Bone::PointsToBone(FPoint pnt1, FPoint pnt2) {
+	Bone bone;
+	bone.p = pnt1;
+	float h = pnt2.y - pnt1.y;
+	float w = pnt2.x - pnt1.x;
+	float r2 = w * w + h * h;
+	bone.l = sqrtf(r2);
+
+	float a = atan2(pnt1.y - pnt2.y, pnt1.x - pnt2.x) / M_PI * 180.f;
+	a = (a < 0) ? a + 360.f : a;   //Без этого диапазон от 0...180 и -1...-180
+	a -= 180.f;
+
+	bone.a = a / 180.f * M_PI;
+	return bone;
+}

@@ -101,4 +101,16 @@ namespace Core {
 			SetGlSize(width * coefW, height * coefH);
 		}
 	}
+
+	void Screen::MouseDown(const IPoint& mousePos) {
+		_mousePos = mousePos;
+	}
+
+	void Screen::MouseMove(const IPoint& mousePos) {
+		_mousePos = mousePos;
+	}
+
+	void Screen::MouseUp(const IPoint& mousePos) {
+		_mousePos = mousePos;
+	}
 };

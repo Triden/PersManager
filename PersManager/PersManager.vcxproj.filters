@@ -63,9 +63,6 @@
     <ClCompile Include="SkeleteronManager\SkeletonManager.cpp">
       <Filter>Файлы исходного кода\SkeletonManager</Filter>
     </ClCompile>
-    <ClCompile Include="SkeleteronManager\Instruments.cpp">
-      <Filter>Файлы исходного кода\SkeletonManager</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Types.cpp">
       <Filter>Файлы исходного кода\Engine</Filter>
     </ClCompile>
@@ -78,13 +75,25 @@
     <ClCompile Include="Engine\ResourceManager.cpp">
       <Filter>Файлы исходного кода\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="SkeleteronManager\MainInstruments.cpp">
-      <Filter>Файлы исходного кода\SkeletonManager</Filter>
-    </ClCompile>
     <ClCompile Include="SkeleteronManager\Grid.cpp">
       <Filter>Файлы исходного кода\SkeletonManager</Filter>
     </ClCompile>
     <ClCompile Include="SkeleteronManager\ScaleManager.cpp">
+      <Filter>Файлы исходного кода\SkeletonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeleteronManager\Field.cpp">
+      <Filter>Файлы исходного кода\SkeletonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeleteronManager\InstrumentsPanel.cpp">
+      <Filter>Файлы исходного кода\SkeletonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeleteronManager\States.cpp">
+      <Filter>Файлы исходного кода\SkeletonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeleteronManager\SkeletonInstruments.cpp">
+      <Filter>Файлы исходного кода\SkeletonManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeleteronManager\SkeletonData.cpp">
       <Filter>Файлы исходного кода\SkeletonManager</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,9 +149,6 @@
     <ClInclude Include="Engine\Include.h">
       <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="SkeleteronManager\Instruments.h">
-      <Filter>Заголовочные файлы\SkeletonManager</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Panel.h">
       <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
@@ -152,13 +158,25 @@
     <ClInclude Include="Engine\ResourceManager.h">
       <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="SkeleteronManager\MainInstruments.h">
-      <Filter>Заголовочные файлы\SkeletonManager</Filter>
-    </ClInclude>
     <ClInclude Include="SkeleteronManager\Grid.h">
       <Filter>Заголовочные файлы\SkeletonManager</Filter>
     </ClInclude>
     <ClInclude Include="SkeleteronManager\ScaleManager.h">
+      <Filter>Заголовочные файлы\SkeletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeleteronManager\Field.h">
+      <Filter>Заголовочные файлы\SkeletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeleteronManager\InstrumentsPanel.h">
+      <Filter>Заголовочные файлы\SkeletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeleteronManager\States.h">
+      <Filter>Заголовочные файлы\SkeletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeleteronManager\SkeletonInstruments.h">
+      <Filter>Заголовочные файлы\SkeletonManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeleteronManager\SkeletonData.h">
       <Filter>Заголовочные файлы\SkeletonManager</Filter>
     </ClInclude>
   </ItemGroup>

@@ -33,11 +33,14 @@
     <ClCompile Include="Engine\Writer.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SkeleteronManager\Field.cpp" />
     <ClCompile Include="SkeleteronManager\Grid.cpp" />
-    <ClCompile Include="SkeleteronManager\Instruments.cpp" />
-    <ClCompile Include="SkeleteronManager\MainInstruments.cpp" />
+    <ClCompile Include="SkeleteronManager\SkeletonData.cpp" />
+    <ClCompile Include="SkeleteronManager\SkeletonInstruments.cpp" />
+    <ClCompile Include="SkeleteronManager\InstrumentsPanel.cpp" />
     <ClCompile Include="SkeleteronManager\ScaleManager.cpp" />
     <ClCompile Include="SkeleteronManager\SkeletonManager.cpp" />
+    <ClCompile Include="SkeleteronManager\States.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Application.h" />
@@ -59,11 +62,14 @@
     <ClInclude Include="rapidxml\rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml\rapidxml_print.hpp" />
     <ClInclude Include="rapidxml\rapidxml_utils.hpp" />
+    <ClInclude Include="SkeleteronManager\Field.h" />
     <ClInclude Include="SkeleteronManager\Grid.h" />
-    <ClInclude Include="SkeleteronManager\Instruments.h" />
-    <ClInclude Include="SkeleteronManager\MainInstruments.h" />
+    <ClInclude Include="SkeleteronManager\SkeletonData.h" />
+    <ClInclude Include="SkeleteronManager\SkeletonInstruments.h" />
+    <ClInclude Include="SkeleteronManager\InstrumentsPanel.h" />
     <ClInclude Include="SkeleteronManager\ScaleManager.h" />
     <ClInclude Include="SkeleteronManager\SkeletonManager.h" />
+    <ClInclude Include="SkeleteronManager\States.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{352A9422-8AB4-4401-9A40-C86928E1C9CF}</ProjectGuid>
