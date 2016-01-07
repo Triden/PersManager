@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <vector>
 
+#define M_PI 3.14159265359f
+
 class FPoint;
 
 class IPoint {
