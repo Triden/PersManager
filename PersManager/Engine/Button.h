@@ -11,6 +11,7 @@ namespace Core {
 		bool _mouseMove;
 		IRect _rect;
 		PolyObject* _icon;
+		bool _enable;
 		virtual void DrawIcon();
 	public:
 		Button();
@@ -23,6 +24,7 @@ namespace Core {
 		virtual void Create(const IRect& rect);
 		virtual void MoveTo(const IPoint& pos);
 		virtual void SetIcon(PolyObject* icon);
+		virtual void SetEnable(bool enable) { _enable = enable; }
 	};
 
 	//Кнопка флажок

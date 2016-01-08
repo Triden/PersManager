@@ -77,6 +77,7 @@ bool InstrumentsPanel::MouseDown(const IPoint& pnt) {
 	for (int i = 0; i < (int)_buttons.size(); ++i) {
 		if (_buttons[i]->MouseDown(pnt)) {
 			SkeletonInstruments::Instance()->SetState(_buttons[i]->GetState());
+			_buttons[i]->SetEnable(false);
 			return res;
 		}
 	}
@@ -103,5 +104,6 @@ void InstrumentsPanel::MouseUp(const IPoint& pnt) {
 void InstrumentsPanel::ResetButtons() {
 	for (int i = 0; i < (int)_buttons.size(); ++i) {
 		_buttons[i]->SetChecked(false);
+		_buttons[i]->SetEnable(true);
 	}
 }

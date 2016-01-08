@@ -1,7 +1,8 @@
 #include "SkeletonData.h"
 
 SkeletonData::SkeletonData() :
-	_activeBone(NULL)
+	_activeBone(NULL),
+	_newBone()
 {
 	_bones.clear();
 }
@@ -15,20 +16,22 @@ void SkeletonData::Save() {
 void SkeletonData::Load() {
 }
 
-void SkeletonData::MakeBone(FPoint pnt) {
-	if (_activeBone != NULL) {	//Создаем еще одну кость не удалив предыдущую
-		Assert(false);
-	} else {
-		_activeBone = new Bone();
-		_activeBone->p = pnt;
-	}
+void SkeletonData::SetActiveBone(Bone* bone) {
+	_activeBone = bone;
 }
 
 void SkeletonData::ResetActiveBone() {
-	delete _activeBone;
 	_activeBone = NULL;
 }
 
-void SkeletonData::AddActiveBone() {
-	_bones.push_back(*_activeBone);
+void SkeletonData::AddBone(Bone* bone) {
+	_bones.push_back(*bone);
+}
+
+void SkeletonData::MakeNewBone(FPoint pnt) {
+	_newBone = Bone::PointsToBone(pnt, pnt);
+}
+
+Bone* SkeletonData::GetNewBone() {
+	return &_newBone;
 }

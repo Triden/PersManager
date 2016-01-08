@@ -8,6 +8,7 @@ class Field {
 private:
 	Grid _grid;	//Сетка
 	SkeletonData _data;	//Данные о скелете, его анимациях и прочее
+	static Field* _instance;
 public:
 	Field();
 	~Field();
@@ -16,5 +17,7 @@ public:
 	bool MouseDown(const IPoint& pnt);
 	void MouseMove(const IPoint& pnt);
 	void MouseUp(const IPoint& pnt);
+	static Field* Instance() { return _instance; }
+	SkeletonData* GetData() { return &_data; }
 };
 #endif

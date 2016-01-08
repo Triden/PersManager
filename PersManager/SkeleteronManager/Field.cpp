@@ -1,9 +1,13 @@
 #include "Field.h"
 #include "SkeletonManager.h"
 
+Field* Field::_instance = NULL;
+
 Field::Field() :
 	_grid(20)
 {
+	Assert(_instance == NULL);
+	_instance = this;
 }
 
 Field::~Field() {
@@ -30,21 +34,25 @@ void Field::Draw() {
 	Core::render.MatrixScale(scale);
 	_grid.Draw(scaledRect);
 
+	Bone* activeBone = _data.GetActiveBone();
+
+	//Все кости которые у нас сейчас имеются
+	for (int i = 0; i < (int)_data.GetBones().size(); ++i) {
+		Bone *bone = &_data.GetBones()[i];
+		if (bone == NULL) {
+			continue;
+		}
+		if (bone == activeBone) {
+			continue;
+		}
+		Core::render.DrawBone(*bone);
+	}
+
 	//Текущая создаваемая кость
-	Core::render.DrawBone(_data.GetActiveBone());
-	Bone test;
-	test.p = FPoint(100.f, 100.f);
-	test.l = 30.f;
-	static float angle = 0.f;
-	test.a = angle;
-	angle += 0.05f;
-	Core::render.DrawBone(&test);
-
-	Bone test2 = Bone::PointsToBone(FPoint(100.f, 100.f), FPoint(120.f, 120.f));
-	Core::render.DrawBone(&test2);
-
-	for (int i = 0; i < _data.GetBones().size(); ++i) {
-		Core::render.DrawBone(&_data.GetBones()[i]);
+	if (activeBone != NULL) {
+		Core::render.SetColor(Color::BLUE);
+		Core::render.DrawBone(*activeBone);
+		Core::render.ResetColor();
 	}
 	
 	Core::render.PopMatrix();
@@ -92,16 +100,40 @@ bool Field::MouseDown(const IPoint& pnt) {
 		Assert(false);
 		return false;
 	}
+
+	FPoint scaledPnt = scaleManager->GetPointScaled(pnt);
 	if (instruments != NULL) {
 		SkeletonState state = instruments->GetState();
 		//Обрабатываем в зависимости от состояния
-		if (state == BONE_TO_ADD_POINT_1) {
-			
-			_data.MakeBone(scaleManager->GetPointScaled(pnt));
+		if (state == NONE) {	//Обычное состояние
+			//Выделяем кости
+			Bone* activeBone = _data.GetActiveBone();
+			bool pressed = false;
+			if (activeBone != NULL) {
+				pressed = Bone::BoneToPolygon(*activeBone).Contain(scaledPnt);
+			}
+			if (!pressed) {
+				std::vector<Bone>& bones = _data.GetBones();
+				for (int i = (int)bones.size() - 1; i >= 0; --i) {
+					if (Bone::BoneToPolygon(bones[i]).Contain(scaledPnt)) {
+						pressed = true;
+						_data.SetActiveBone(&bones[i]);
+						break;
+					}
+				}
+			}
+			if (!pressed) {
+				_data.ResetActiveBone();
+			}
+		} else if (state == BONE_TO_ADD_POINT_1) {
+			//Состояние добавления первой точки для кости
+			_data.MakeNewBone(scaledPnt);
+			_data.SetActiveBone(_data.GetNewBone());
 			instruments->SetState(BONE_TO_ADD_POINT_2);
 			return true;
 		} else if (state == BONE_TO_ADD_POINT_2) {
-			_data.AddActiveBone();
+			//Состояние добавления воторой точки для кости
+			_data.AddBone(_data.GetActiveBone());
 			_data.ResetActiveBone();
 			instruments->SetState(NONE);
 			return true;

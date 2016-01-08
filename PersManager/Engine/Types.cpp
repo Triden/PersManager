@@ -11,6 +11,7 @@ const Color Color::LIGHT_GRAY = Color(0.92f, 0.93f, 0.925f);
 const Color Color::YELLOW = Color(0xFD / 255.f, 0xFD / 255.f, 0x99 / 255.f);
 const Color Color::LIGHT_RED = Color(0xFF / 255.f, 0x96 / 255.f, 0x96 / 255.f);
 const Color Color::DARK_RED = Color(94.f / 255.f, 4.f / 255.f, 14.f / 255.f);
+const Color Color::DARK_BLUE = Color(0.f, 0.f, 0.5f);
 
 Bone Bone::PointsToBone(FPoint pnt1, FPoint pnt2) {
 	Bone bone;
@@ -26,4 +27,15 @@ Bone Bone::PointsToBone(FPoint pnt1, FPoint pnt2) {
 
 	bone.a = a / 180.f * M_PI;
 	return bone;
+}
+
+FPolygon Bone::BoneToPolygon(const Bone& bone) {
+	FPolygon poly;
+	const float W = 0.05f * bone.l;	//Ширина основания
+	poly.v1 = FPoint(W * cosf(bone.a - M_PI / 2.f),
+		W * sinf(bone.a - M_PI / 2.f)) + bone.p;
+	poly.v2 = FPoint(W * cosf(bone.a + M_PI / 2.f),
+		W * sinf(bone.a + M_PI / 2.f)) + bone.p;
+	poly.v3 = FPoint(bone.l * cosf(bone.a), bone.l * sinf(bone.a)) + bone.p;
+	return poly;
 }

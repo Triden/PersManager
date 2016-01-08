@@ -1,6 +1,6 @@
 #include "SkeletonInstruments.h"
-
 #include "..\Engine\Assertion.h"
+#include "Field.h"
 
 SkeletonInstruments* SkeletonInstruments::_instance = NULL;
 

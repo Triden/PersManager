@@ -8,16 +8,20 @@ class SkeletonData {
 private:
 	std::vector<Bone> _bones;
 	Bone* _activeBone;	//Косточка с которой мы работаем
+	Bone _newBone;
 public:
 	SkeletonData();
 	~SkeletonData();
 	void Save();
 	void Load();
-	void MakeBone(FPoint pnt);	//Точка в которой она начинается
+	void SetActiveBone(Bone* bone);	
 	Bone* GetActiveBone() { return _activeBone; }
 	void ResetActiveBone();
-	void AddActiveBone();
+	void AddBone(Bone* bone);
 	std::vector<Bone>& GetBones() { return _bones; }
+
+	void MakeNewBone(FPoint pnt);	//Создаем новую кость
+	Bone* GetNewBone();
 };
 
 #endif

@@ -78,12 +78,16 @@ namespace Core {
 		glEnd();
 	};
 
-	void Render::DrawBone(Bone* bone) {
-		if (bone != NULL) {
-			FPoint pnt1 = bone->p;
-			FPoint pnt2(bone->l * cosf(bone->a), bone->l * sinf(bone->a));
-			DrawLine(pnt1, pnt2 + pnt1);
-		}
+	void Render::DrawBone(const Bone& bone) {
+		FPolygon poly = Bone::BoneToPolygon(bone);
+		DrawPolygon(poly);
+		
+		render.SetPolygonMode(POLY_LINE);
+		render.SetColor(Color::DARK_BLUE);
+		poly = Bone::BoneToPolygon(bone);
+		DrawPolygon(poly);
+		Core::render.ResetColor();
+		render.ResetPolygonMode();
 	}
 
 	void Render::DrawRect(const IRect& rect) {

@@ -7,7 +7,8 @@ namespace Core {
 		_mouseDown(false),
 		_mouseMove(false),
 		_rect(0, 0, 1, 1),
-		_icon(NULL)
+		_icon(NULL),
+		_enable(true)
 	{
 
 	}
@@ -52,6 +53,9 @@ namespace Core {
 	}
 
 	bool Button::MouseDown(const IPoint& mousePos) {
+		if (!_enable) {
+			return false;
+		}
 		_mouseDown = _rect.Contain(mousePos);
 		_mouseMove = _mouseDown;
 		return _mouseDown;

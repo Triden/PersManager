@@ -32,6 +32,7 @@ public:
 	static const Color YELLOW;
 	static const Color LIGHT_RED;
 	static const Color DARK_RED;
+	static const Color DARK_BLUE;
 
 	float r;
 	float g;
@@ -45,6 +46,7 @@ struct Bone {
 	float l;	//ƒлина луча
 	float a;	//”гол под которым этот луч расположен
 	static Bone PointsToBone(FPoint pnt1, FPoint pnt2);
+	static FPolygon BoneToPolygon(const Bone& bone);
 };
 
 

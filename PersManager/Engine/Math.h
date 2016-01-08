@@ -114,6 +114,13 @@ public:
 		v2 *= scale;
 		v3 *= scale;
 	}
+	bool Contain(FPoint pnt) {
+		float k1 = (v1.x - pnt.x) * (v2.y - v1.y) - (v2.x - v1.x) * (v1.y - pnt.y);
+		float k2 = (v2.x - pnt.x) * (v3.y - v2.y) - (v3.x - v2.x) * (v2.y - pnt.y);
+		float k3 = (v3.x - pnt.x) * (v1.y - v3.y) - (v1.x - v3.x) * (v3.y - pnt.y);
+		return ((k1 >= 0 && k2 >= 0 && k3 >= 0) ||
+				(k1 < 0 && k2 < 0 && k3 < 0));
+	}
 };
 
 class IRect {
