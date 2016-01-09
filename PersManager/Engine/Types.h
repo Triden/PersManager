@@ -42,6 +42,9 @@ public:
 };
 
 struct Bone {
+	bool operator ==(const Bone& b) {
+		return l == b.l && p == b.p && a == b.a;
+	}
 	FPoint p;	//Точка из которой выходит луч
 	float l;	//Длина луча
 	float a;	//Угол под которым этот луч расположен

@@ -22,6 +22,7 @@ public:
 	void MouseMove(const IPoint& pnt);
 	void MouseUp(const IPoint& pnt);
 	void MouseWheel(int dir, const IPoint& mousePos);
+	void KeyPress(unsigned char key);
 	ScaleManager* GetScaleManager();
 };
 

@@ -35,3 +35,16 @@ void SkeletonData::MakeNewBone(FPoint pnt) {
 Bone* SkeletonData::GetNewBone() {
 	return &_newBone;
 }
+
+void SkeletonData::RemoveBone(Bone* bone) {
+	if (bone == NULL) {
+		Assert(false);
+		return;
+	}
+	for (int i = 0; i < (int)_bones.size(); ++i) {
+		if (_bones[i] == *bone) {	//С учетом, что у нас одна такая кость
+			_bones.erase(_bones.begin() + i);
+			return;
+		}
+	}
+}

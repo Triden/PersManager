@@ -53,6 +53,9 @@ public:
 		x /= p;
 		y /= p;
 	};
+	bool operator ==(const FPoint& p) {
+		return p.x == x && p.y == y;
+	};
 	FPoint operator-() const {
 		return FPoint(-x, -y);
 	}
@@ -76,6 +79,11 @@ public:
 	FPoint v3;
 	FPolygon() :
 		v1(FPoint()), v2(FPoint()), v3(FPoint())
+	{}
+	FPolygon(const FPoint& v1_, const FPoint& v2_, const FPoint& v3_) :
+		v1(v1_),
+		v2(v2_),
+		v3(v3_)
 	{}
 	FPoint GetMin() {
 		FPoint min(v1);

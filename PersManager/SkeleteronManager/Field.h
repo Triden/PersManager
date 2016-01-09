@@ -22,7 +22,9 @@ public:
 	}
 
 	void Draw() {
+		Core::render.SetColor(Color::RED);
 		Core::render.DrawCircle(_circle.c, _circle.r, 8);
+		Core::render.ResetColor();
 	}
 
 	bool MouseDown(const IPoint& pnt) {
@@ -70,6 +72,7 @@ public:
 	bool MouseDown(const IPoint& pnt);
 	void MouseMove(const IPoint& pnt);
 	void MouseUp(const IPoint& pnt);
+	void KeyPress(unsigned char key);
 	static Field* Instance() { return _instance; }
 	SkeletonData* GetData() { return &_data; }
 	bool CircleInstrumentsVisible();

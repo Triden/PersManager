@@ -32,6 +32,7 @@ void GameMain::MouseUp(const IPoint& mousePos) {
 };
 
 void GameMain::KeyPress(unsigned char key) {
+	_skeletonManager.KeyPress(key);
 };
 
 void GameMain::SetWindowParams() {

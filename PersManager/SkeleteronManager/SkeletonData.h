@@ -19,7 +19,7 @@ public:
 	void ResetActiveBone();
 	void AddBone(Bone* bone);
 	std::vector<Bone>& GetBones() { return _bones; }
-
+	void RemoveBone(Bone* bone);
 	void MakeNewBone(FPoint pnt);	//Создаем новую кость
 	Bone* GetNewBone();
 };

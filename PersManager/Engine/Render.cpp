@@ -79,12 +79,18 @@ namespace Core {
 	};
 
 	void Render::DrawBone(const Bone& bone) {
-		FPolygon poly = Bone::BoneToPolygon(bone);
+		static const float D_L = 0.1f;
+		Bone boneTD = bone;
+		boneTD.p = FPoint(boneTD.l * D_L * cosf(boneTD.a), boneTD.l * D_L * sinf(boneTD.a)) + bone.p;
+		boneTD.l *= (1.f - D_L);
+		FPolygon poly = Bone::BoneToPolygon(boneTD);
+		FPolygon polyA = FPolygon(bone.p, poly.v1, poly.v2);
+		DrawPolygon(polyA);
 		DrawPolygon(poly);
 		
 		render.SetPolygonMode(POLY_LINE);
 		render.SetColor(Color::DARK_BLUE);
-		poly = Bone::BoneToPolygon(bone);
+		DrawPolygon(polyA);
 		DrawPolygon(poly);
 		Core::render.ResetColor();
 		render.ResetPolygonMode();

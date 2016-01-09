@@ -249,3 +249,30 @@ void Field::MouseUp(const IPoint& pnt) {
 	_scaleCI.MouseUp(_mousePos);
 	_mouseDown = false;
 }
+
+void Field::KeyPress(unsigned char key) {
+	SkeletonInstruments* instruments = SkeletonInstruments::Instance();
+	if (instruments != NULL) {
+		SkeletonState state = instruments->GetState();
+		if (state == NONE) {
+			Bone* bone = _data.GetActiveBone();
+			if (bone != NULL) {
+				if (key == 127) {
+					_data.RemoveBone(bone);
+					_data.ResetActiveBone();
+					_circleInstrumentsVisible = false;
+				}
+			}
+		} else if (state == BONE_TO_ADD_POINT_1) {
+			if (key == 27) {
+				_data.ResetActiveBone();	
+				instruments->SetState(NONE);
+			}
+		} else if (state == BONE_TO_ADD_POINT_2) {
+			if (key == 27) {
+				_data.ResetActiveBone();
+				instruments->SetState(NONE);
+			}
+		}
+	}
+}

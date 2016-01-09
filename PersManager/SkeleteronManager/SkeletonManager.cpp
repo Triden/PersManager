@@ -57,3 +57,7 @@ void SkeletonManager::MouseUp(const IPoint& pnt) {
 void SkeletonManager::MouseWheel(int dir, const IPoint& mousePos) {
 	_scaleManager.MouseWheel(dir, mousePos);
 }
+
+void SkeletonManager::KeyPress(unsigned char key) {
+	_field.KeyPress(key);
+}
