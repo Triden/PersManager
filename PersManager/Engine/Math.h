@@ -123,6 +123,17 @@ public:
 	}
 };
 
+class Circle {
+public:
+	FPoint c;	//Центр
+	float r;
+	Circle(FPoint center, float radius) : c(center), r(radius) {};
+	Circle() {};
+	bool Contain(FPoint pnt) {
+		return ((pnt.x - c.x) * (pnt.x - c.x) + (pnt.y - c.y) * (pnt.y - c.y) <= r * r);
+	}
+};
+
 class IRect {
 public:
 	int x;
